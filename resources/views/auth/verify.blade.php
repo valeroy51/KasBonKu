@@ -1,4 +1,4 @@
-@extends('layouts.templogreg')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
