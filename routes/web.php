@@ -25,17 +25,15 @@ use App\Http\Controllers\SiswaController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
     Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
     Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
     Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::delete('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::get('/forms', [HomeController::class, 'forms'])->name('forms');
-
 });
