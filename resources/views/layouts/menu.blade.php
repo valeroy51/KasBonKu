@@ -30,7 +30,7 @@
                     <span class="hide-menu">UI COMPONENTS</span>
                 </li>
                 <li class="sidebar-item">
-                <a class="sidebar-link" href="{{url('/payment')}}" aria-expanded="false">
+                <a class="sidebar-link" href="{{url('/bukti_bayar/create')}}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/request')}}" aria-expanded="false">
+                <a class="sidebar-link" href="{{url('/barang/create')}}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>

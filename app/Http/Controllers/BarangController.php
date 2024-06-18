@@ -11,7 +11,13 @@ class BarangController extends Controller
     {
         $barang = Barang::all();
 
-        return view('home',compact('barang'));
+        return view('request.confirm',compact('barang'));
     }
 
+    public function create()
+    {
+        return view('request.create');
+    }
+
+    
 }
