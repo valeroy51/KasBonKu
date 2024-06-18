@@ -15,7 +15,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::all();
 
-        return view('home', compact('siswa'));
+        return view('siswa.index', compact('siswa'));
     }
     //create
     public function create()
@@ -75,8 +75,5 @@ class SiswaController extends Controller
         $ssw ->delete();
         return redirect()->route('siswa')->with('success', 'Siswa deleted successfully');
     }
-    public function first()
-    {
-        return view('home');
-    }
+    
 }
