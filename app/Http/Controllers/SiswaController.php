@@ -75,4 +75,8 @@ class SiswaController extends Controller
         $ssw ->delete();
         return redirect()->route('siswa')->with('success', 'Siswa deleted successfully');
     }
+    public function first()
+    {
+        return view('home');
+    }
 }
