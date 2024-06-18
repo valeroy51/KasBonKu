@@ -16,6 +16,12 @@ KasBonKu
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                        <i class="ti ti-bell-ringing"></i>
+                        <div class="notification bg-primary rounded-circle"></div>
+                    </a>
+                </li>
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -89,10 +95,10 @@ KasBonKu
                                     <div class="mb-3">
                                         <label for="SelectPrioritas" class="form-label">Prioritas Barang</label>
                                         <select id="SelectPrioritas" class="form-select">
-                                            <option>Low</option>
-                                            <option>Medium</option>
-                                            <option>High</option>
-                                            <option>Critical</option>
+                                            <option value="Low">Low</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="High">High</option>
+                                            <option value="Critical">Critical</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
