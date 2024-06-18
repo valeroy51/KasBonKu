@@ -15,7 +15,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::all();
 
-        return view('siswa.index', compact('siswa'));
+        return view('home', compact('siswa'));
     }
     //create
     public function create()
