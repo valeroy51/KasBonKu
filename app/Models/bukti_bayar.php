@@ -12,7 +12,7 @@ class bukti_bayar extends Model
     protected $fillable = [
         'nama',  
         'kelas', 
-        'price',
+        'harga',
         'metode', 
         'tanggal',
         'notes',
