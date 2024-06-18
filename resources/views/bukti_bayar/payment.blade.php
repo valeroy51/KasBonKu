@@ -9,23 +9,14 @@
     <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
             <ul class="navbar-nav">
-                <!-- <li class="nav-item d-block d-xl-none">
-                    <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                        <i class="ti ti-menu-2"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                        <i class="ti ti-bell-ringing"></i>
-                        <div class="notification bg-primary rounded-circle"></div>
-                    </a>
-                </li> -->
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35"
+                                class="rounded-circle">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
@@ -41,7 +32,8 @@
                                     <i class="ti ti-list-check fs-6"></i>
                                     <p class="mb-0 fs-3">My Task</p>
                                 </a>
-                                <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                <a href="./authentication-login.html"
+                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
                     </li>
@@ -59,14 +51,25 @@
                     <h5 class="card-title fw-semibold mb-4">Formulir Bukti Pembayaran</h5>
                     <div class="card">
                         <div class="card-body">
-                            <form>
+                            <form action="{{route('bukti_bayar.store')}}" method="post">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="paymentAmount" class="form-label">Jumlah Pembayaran</label>
-                                    <input type="text" class="form-control" id="paymentAmount" value="Rp 20.000" readonly>
+                                    <label for="nama" class="form-label">Nama Lengkap Siswa</label>
+                                    <input type="text" class="form-control" id="nama" name="nama"
+                                        placeholder="Masukkan nama lengkap">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="paymentMethod" class="form-label">Metode Pembayaran</label>
-                                    <select id="paymentMethod" class="form-select">
+                                    <label for="kelas" class="form-label">Kelas</label>
+                                    <input type="text" class="form-control" id="kelas" name="kelas"
+                                        placeholder="Masukkan Kelas">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Jumlah Pembayaran</label>
+                                    <input type="text" class="form-control" id="harga" name="harga">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="metode" class="form-label">Metode Pembayaran</label>
+                                    <select id="metode" name="metode" class="form-select">
                                         <option value="cash">Tunai</option>
                                         <option value="bank_transfer">Transfer Bank - 000000000 A/N Bendahara</option>
                                     </select>
@@ -76,17 +79,13 @@
                                     <input type="file" class="form-control" id="paymentProof" accept="image/jpeg">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="paymentDate" class="form-label">Tanggal Pembayaran</label>
-                                    <input type="date" class="form-control" id="paymentDate">
+                                    <label for="tanggal" class="form-label">Tanggal Pembayaran</label>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal">
                                 </div>
-                                <!-- <div class="mb-3">
-                                    <label for="email" class="form-label">Email (Opsional)</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Masukkan email">
-                                    <div id="emailHelp" class="form-text">Email Anda akan digunakan untuk mengirim bukti pembayaran.</div>
-                                </div> -->
                                 <div class="mb-3">
                                     <label for="notes" class="form-label">Catatan Tambahan (Opsional)</label>
-                                    <textarea class="form-control" id="notes" rows="3" placeholder="Masukkan catatan tambahan"></textarea>
+                                    <textarea class="form-control" id="notes" rows="3" name="notes"
+                                        placeholder="Masukkan catatan tambahan"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Kirim Bukti Pembayaran</button>
                             </form>
@@ -100,11 +99,11 @@
 
 <!-- JavaScript untuk mengelola perubahan metode pembayaran -->
 <script>
-    document.getElementById('paymentMethod').addEventListener('change', function () {
-        var paymentMethod = this.value;
+    document.getElementById('metode').addEventListener('change', function () {
+        var metode = this.value;
         var uploadProofContainer = document.getElementById('uploadProofContainer');
 
-        if (paymentMethod === 'bank_transfer') {
+        if (metode === 'bank_transfer') {
             uploadProofContainer.style.display = 'block';
         } else {
             uploadProofContainer.style.display = 'none';
@@ -115,7 +114,8 @@
 <!-- CSS untuk menyesuaikan tampilan input file -->
 <style>
     #uploadProofContainer input[type="file"]::file-selector-text {
-        color: blue; /* Warna biru untuk teks 'Chosen file' */
+        color: blue;
+        /* Warna biru untuk teks 'Chosen file' */
     }
 </style>
 @endsection
