@@ -79,11 +79,11 @@
                                     <label for="paymentDate" class="form-label">Tanggal Pembayaran</label>
                                     <input type="date" class="form-control" id="paymentDate">
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="email" class="form-label">Email (Opsional)</label>
                                     <input type="email" class="form-control" id="email" placeholder="Masukkan email">
                                     <div id="emailHelp" class="form-text">Email Anda akan digunakan untuk mengirim bukti pembayaran.</div>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label for="notes" class="form-label">Catatan Tambahan (Opsional)</label>
                                     <textarea class="form-control" id="notes" rows="3" placeholder="Masukkan catatan tambahan"></textarea>

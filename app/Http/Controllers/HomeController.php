@@ -25,14 +25,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
+    
     public function login()
     {
         return view('login');
     }
-
-    public function forms()
+    public function payment()
     {
-        return view('forms');
+        return view('payment');
+    }
+    public function request()
+    {
+        return view('request');
     }
 }
