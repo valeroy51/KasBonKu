@@ -74,10 +74,10 @@ KasBonKu
                             </div>
                             <div>
                                 <select class="form-select">
-                                    <option value="1">March 2023</option>
-                                    <option value="2">April 2023</option>
-                                    <option value="3">May 2023</option>
-                                    <option value="4">June 2023</option>
+                                    <option value="1">Maret 2024</option>
+                                    <option value="2">April 2024</option>
+                                    <option value="3">Mei 2024</option>
+                                    <option value="4">Juni 2024</option>
                                 </select>
                             </div>
                         </div>
@@ -91,10 +91,10 @@ KasBonKu
                         <!-- Yearly Breakup -->
                         <div class="card overflow-hidden">
                             <div class="card-body p-4">
-                                <h5 class="card-title mb-9 fw-semibold">Monthly Cash Target</h5>
+                                <h5 class="card-title mb-9 fw-semibold">Target Kas Bulanan</h5>
                                 <div class="row align-items-center">
                                     <div class="col-8">
-                                        <h4 class="fw-semibold mb-3">Rp.36,358</h4>
+                                        <h4 class="fw-semibold mb-3">Rp.720.000</h4>
                                         <div class="d-flex align-items-center mb-3">
                                             <span class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                                                 <i class="ti ti-arrow-up-left text-success"></i>
@@ -105,11 +105,11 @@ KasBonKu
                                         <div class="d-flex align-items-center">
                                             <div class="me-4">
                                                 <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">2022</span>
                                             </div>
                                             <div>
                                                 <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
-                                                <span class="fs-2">2023</span>
+                                                <span class="fs-2">2021</span>
                                             </div>
                                         </div>
                                     </div>
@@ -128,8 +128,8 @@ KasBonKu
                             <div class="card-body">
                                 <div class="row alig n-items-start">
                                     <div class="col-8">
-                                        <h5 class="card-title mb-9 fw-semibold"> Monthly Earnings </h5>
-                                        <h4 class="fw-semibold mb-3">Rp.2.000</h4>
+                                        <h5 class="card-title mb-9 fw-semibold"> Pendapatan Bulanan </h5>
+                                        <h4 class="fw-semibold mb-3">Rp.20.000</h4>
                                         <div class="d-flex align-items-center pb-1">
                                             <span class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
                                                 <i class="ti ti-arrow-down-right text-danger"></i>
@@ -158,7 +158,7 @@ KasBonKu
                 <div class="card w-100">
                     <div class="card-body p-4">
                         <div class="mb-4">
-                            <h5 class="card-title fw-semibold">Recent Cash Revenue</h5>
+                            <h5 class="card-title fw-semibold">Riwayat Transaksi</h5>
                         </div>
                         <ul class="timeline-widget mb-0 position-relative mb-n5">
                             <li class="timeline-item d-flex position-relative overflow-hidden">
@@ -218,29 +218,47 @@ KasBonKu
             <div class="col-lg-8 d-flex align-items-stretch">
                 <div class="card w-100">
                     <div class="card-body p-4">
-                        <h5 class="card-title fw-semibold mb-4">Funds Request</h5>
+                        <h5 class="card-title fw-semibold mb-4">Permintaan Barang</h5>
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 align-middle">
                                 <thead class="text-dark fs-4">
                                     <tr>
-                                        <th class="border-bottom-0">
+                                        <th scope="col" class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Id</h6>
                                         </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Assigned</h6>
+                                        <th scope="col" class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Nama Barang</h6>
                                         </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Name</h6>
+                                        <th scope="col" class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Nama Siswa</h6>
                                         </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Priority</h6>
+                                        <th scope="col" class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Prioritas</h6>
                                         </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Budget</h6>
+                                        <th scope="col" class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Harga</h6>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($barang as $brg)
+                                    <tr>
+                                        <td>{{ $brg->id }}</td>
+                                        <td>{{ $brg->barang }}</td>
+                                        <td>{{ $brg->nama }}</td>
+                                        <td>{{ $brg->prioritas }}</td>
+                                        <td>{{ $brg->harga }}</td>
+
+                                        <!-- <td>
+                                            <a href="{{route('siswa.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
+                                            <form action="{{route('siswa.destroy',$brg->id)}}" method="post" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td> -->
+                                    </tr>
+                                    @endforeach
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">1</h6>

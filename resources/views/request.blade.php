@@ -67,23 +67,26 @@ KasBonKu
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title fw-semibold mb-4">Forms</h5>
+                    <h5 class="card-title fw-semibold mb-4">Barang yang ingin dibeli</h5>
                     <div class="card mb-0">
                         <div class="card-body">
                             <form>
                                 <fieldset>
-                                    <legend>Barang yang ingin dibeli</legend>
                                     <div class="mb-3">
                                         <label for="barangDiinginkan" class="form-label">Isi barang yang diinginkan</label>
                                         <input type="text" id="barangDiinginkan" class="form-control" placeholder="Input barang">
                                     </div>
                                     <div class="mb-3">
-                                    <label for="basic-url" class="form-label">Link pembelian</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                        <label for="namaSiswa" class="form-label">Nama Siswa</label>
+                                        <input type="text" id="namaSiswa" class="form-control" placeholder="Input nama">
                                     </div>
-                                    <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+                                    <div class="mb-3">
+                                        <label for="basic-url" class="form-label">Link pembelian</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                        </div>
+                                        <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="hargaBarang" class="form-label">Isi harga barang yang diinginkan</label>
@@ -100,11 +103,11 @@ KasBonKu
                                     </div>
                                     <div class="mb-3">
                                         <div class="input-group">
-                                        <span class="input-group-text">Catatan</span>
-                                        <textarea class="form-control" aria-label="Catatan"></textarea>
+                                            <span class="input-group-text">Catatan</span>
+                                            <textarea class="form-control" aria-label="Catatan"></textarea>
+                                        </div>
                                     </div>
-                                    </div>
-                                    
+
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </fieldset>
                             </form>
@@ -113,7 +116,7 @@ KasBonKu
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
@@ -25,7 +26,7 @@ use App\Http\Controllers\SiswaController;
 
 Auth::routes();
 
-Route::get('/', [SiswaController::class, 'first'])->name('home');
+Route::get('/', [HomeController::class, 'first'])->name('home');
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
 
 Route::group(['middleware' => 'auth'], function () {
