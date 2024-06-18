@@ -10,10 +10,10 @@ KasBonKu
         <h1>Daftar Pengajuan Bukti Pembayaran </h1>
         <a href="{{route('bukti_bayar.payment')}}" class="btn btn-primary mb-3">Tambah Data</a>
         @if (session('success'))
-            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>{{session('success')}}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div> -->
+            </div>
         @endif
         <table class="table">
             <thead>
@@ -21,7 +21,7 @@ KasBonKu
                     <th scope="col">#</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Kelas</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Harga</th>
                     <th scope="col">Metode</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Notes</th>
@@ -34,7 +34,7 @@ KasBonKu
                         <td>{{ $bbr->id }}</td>
                         <td>{{ $bbr->nama }}</td>
                         <td>{{ $bbr->kelas }}</td>
-                        <td>{{ $bbr->price }}</td>
+                        <td>{{ $bbr->harga }}</td>
                         <td>{{ $bbr->metode }}</td>
                         <td>{{ $bbr->tanggal }}</td>
                         <td>{{ $bbr->notes }}</td>
@@ -46,7 +46,6 @@ KasBonKu
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </td>
-
                     </tr>
                 @endforeach
             </tbody>

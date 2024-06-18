@@ -64,8 +64,8 @@
                                         placeholder="Masukkan Kelas">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="price" class="form-label">Jumlah Pembayaran</label>
-                                    <input type="text" class="form-control" id="price" name="price" value="20000" readonly>
+                                    <label for="harga" class="form-label">Jumlah Pembayaran</label>
+                                    <input type="text" class="form-control" id="harga" name="harga">
                                 </div>
                                 <div class="mb-3">
                                     <label for="metode" class="form-label">Metode Pembayaran</label>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('nama');
             $table->String('kelas');
-            $table->String('price');
+            $table->String('harga');
             $table->String('metode');
             $table->String('tanggal');
             $table->String('notes');

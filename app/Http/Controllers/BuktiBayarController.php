@@ -24,7 +24,7 @@ class BuktiBayarController extends Controller
         $request->validate([
             'nama' => 'required',
             'kelas' => 'required',
-            'price' => 'required',
+            'harga' => 'required',
             'metode' => 'required',
             'tanggal' => 'required',
             'notes' => 'required',
