@@ -16,12 +16,6 @@ KasBonKu
                         <i class="ti ti-menu-2"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                        <i class="ti ti-bell-ringing"></i>
-                        <div class="notification bg-primary rounded-circle"></div>
-                    </a>
-                </li>
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -94,18 +88,23 @@ KasBonKu
                                     <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Harga</h6>
                                     </th><th scope="col" class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Link Pembelian</h6>
+                                    </th>
+                                    <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">aksi</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($barang as $brg)
+                                @foreach ($request as $req)
                                 <tr>
                                     <td>{{ $brg->id }}</td>
-                                    <td>{{ $brg->barang }}</td>
                                     <td>{{ $brg->nama }}</td>
-                                    <td>{{ $brg->prioritas }}</td>
+                                    <td>{{ $brg->barang }}</td>
                                     <td>{{ $brg->harga }}</td>
+                                    <td>{{ $brg->prioritas }}</td>                                    
+                                    <td>{{ $brg->link }}</td>
+                                    <td>{{ $brg->catatan }}</td>
                                     <td>
                                         <a href="{{route('barang.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
                                         <form action="{{route('barang.destroy',$brg->id)}}" method="POST" class="d-inline">

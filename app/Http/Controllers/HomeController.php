@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\bukti_bayar;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $bukti_bayar = bukti_bayar::all();
 
-        return view('home',compact('barang'));
+        return view('home',compact('bukti_bayar'));
     }
 
     public function login()
