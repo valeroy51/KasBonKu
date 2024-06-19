@@ -9,7 +9,7 @@ KasBonKu
     <div class="container">
         <h1>Tambah Data Siswa</h1>
 
-        <form action="{{route('siswa.store')}}" method="post">
+        <form action="{{route('siswa.store')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="noUrut" class="form-label">No Urut</label>

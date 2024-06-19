@@ -64,56 +64,56 @@ KasBonKu
     <!--  Header End -->
     <div class="container-fluid">
         <!--  Row 1 -->
-        <div class="col-lg-8 d-flex align-items-stretch">
-                <div class="card w-100">
-                    <div class="card-body p-4">
-                        <h5 class="card-title fw-semibold mb-4">Permintaan Barang</h5>
-                        <a href="{{route('barang.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
-                        <div class="table-responsive">
-                            <table class="table text-nowrap mb-0 align-middle">
-                                <thead class="text-dark fs-4">
-                                    <tr>
-                                        <th scope="col" class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Id</h6>
-                                        </th>
-                                        <th scope="col" class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Nama Barang</h6>
-                                        </th>
-                                        <th scope="col" class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Nama Siswa</h6>
-                                        </th>
-                                        <th scope="col" class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Prioritas</h6>
-                                        </th>
-                                        <th scope="col" class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Harga</h6>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($barang as $brg)
-                                    <tr>
-                                        <td>{{ $brg->id }}</td>
-                                        <td>{{ $brg->barang }}</td>
-                                        <td>{{ $brg->nama }}</td>
-                                        <td>{{ $brg->prioritas }}</td>
-                                        <td>{{ $brg->harga }}</td>
-
-                                        <!-- <td>
-                                            <a href="{{route('siswa.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
-                                            <form action="{{route('siswa.destroy',$brg->id)}}" method="post" class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td> -->
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title fw-semibold mb-4">Barang yang ingin dibeli</h5>
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <form action="{{route('barang.store')}}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="barang" class="form-label">Nama Barang yang Diinginkan</label>
+                                    <input type="text" id="barang" name="barang" class="form-control" placeholder="Input Nama Barang">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label">Nama Siswa</label>
+                                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Input Nama Siswa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="basic-url" class="form-label">Link Pembelian</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                                        <input type="text" class="form-control" id="basic-url" name="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                    </div>
+                                    <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="prioritas" class="form-label">Prioritas Barang</label>
+                                    <select id="prioritas" class="form-select" name="prioritas">
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                        <option value="Critical">Critical</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Isi Harga Barang yang Diinginkan</label>
+                                    <input type="text" id="harga" name="harga" class="form-control" placeholder="Input Harga">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="input-group">
+                                        <span class="input-group-text">Catatan</span>
+                                        <textarea class="form-control" id="catatan" name="catatan" aria-label="catatan"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
     </div>
 </div>

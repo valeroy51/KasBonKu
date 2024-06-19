@@ -14,8 +14,9 @@ class barang extends Model
         'barang',
         'nama',
         'prioritas',
-        'create_at',
-        'update_at',
+        'harga',
+        'created_at',
+        'updated_at',
     ];
 
     protected $table = 'barang';

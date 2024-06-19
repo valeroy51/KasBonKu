@@ -33,19 +33,4 @@ class HomeController extends Controller
     {
         return view('login');
     }
-    public function payment()
-    {
-        return view('bukti_bayar.payment');
-    }
-    public function request()
-    {
-        return view('request');
-    }
-
-    public function first()
-    {
-        $barang = Barang::all();
-
-        return view('home',compact('barang'));
-    }
 }

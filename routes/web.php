@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\BuktiBayarController;
-
+use App\Http\Controllers\BarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,38 +19,59 @@ use App\Http\Controllers\BuktiBayarController;
 |
 */
 
-// Route::get('/', function () {
+// Route::GET('/', function () {
 //     return view('welcome');
 // });
 
-// Route::get('/', [homeController::class, 'index']);
-// Route::get('/register', [homeController::class, 'register']);
-// Route::get('/login', [homeController::class, 'login']);
+// Route::GET('/', [homeController::class, 'index']);
+// Route::GET('/register', [homeController::class, 'register']);
+// Route::GET('/login', [homeController::class, 'login']);
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/', [HomeController::class, 'first'])->name('home');
-Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
-Route::get('/bukti_bayar', [BuktiBayarController::class, 'index'])->name('bukti_bayar') ;
+Route::GET('/', [Controller::class, 'first'])->name('home');
 
+// Route::middleware(['verified'])->group(function () {
+//     Route::GET('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
-    Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
-    Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
-    Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::delete('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
-    Route::get('/payment', [HomeController::class, 'payment'])->name('payment');
-    Route::get('/request', [HomeController::class, 'request'])->name('request');
-
-    Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
-    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
-
-    Route::get('/bukti_bayar/payment', [BuktiBayarController::class, 'payment'])->name('bukti_bayar.payment');
-    Route::get('/bukti_bayar/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('bukti_bayar.confirm');
-    Route::post('/bukti_bayar/store', [BuktiBayarController::class, 'store'])->name('bukti_bayar.store');
-    Route::put('/bukti_bayar/update/{id}', [BuktiBayarController::class, 'update'])->name('bukti_bayar.update');
-    Route::delete('/bukti_bayar/destroy/{id}', [BuktiBayarController::class, 'destroy'])->name('bukti_bayar.destroy');
-
+//     Route::prefix('siswa')->name('siswa.')->group(function () {
+//         Route::GET('/', [SiswaController::class, 'index'])->name('siswa');
+//         Route::GET('/create', [SiswaController::class, 'create'])->name('siswa.create');
+//         Route::GET('/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
+//         Route::POST('/store', [SiswaController::class, 'store'])->name('siswa.store');
+//         Route::PUT('/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+//         Route::DELETE('/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+//     });
+//     Route::prefix('buktiBayar')->name('buktiBayar.')->group(function () {
+//         Route::GET('/', [BuktiBayarController::class, 'index'])->name('buktiBayar');
+//         Route::GET('/create', [BuktiBayarController::class, 'create'])->name('buktiBayar.create');
+//         Route::GET('/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('buktiBayar.confirm');
+//         Route::POST('/store', [BuktiBayarController::class, 'store'])->name('buktiBayar.store');
+//         Route::PUT('/update/{id}', [BuktiBayarController::class, 'update'])->name('buktiBayar.update');
+//         Route::DELETE('/destroy/{id}', [BuktiBayarController::class, 'destroy'])->name('buktiBayar.destroy');
+//     });
+//     Route::prefix('barang')->name('barang.')->group(function () {
+//         Route::GET('/', [BarangController::class, 'index'])->name('barang');
+//         Route::GET('/create', [BarangController::class, 'create'])->name('barang.create');
+//         Route::POST('/store', [BarangController::class, 'store'])->name('barang.store');
+//     });
+// });
+Route::middleware(['verified'])->group(function () {
+    Route::GET('/home', [HomeController::class, 'index'])->name('home');
+    
+    Route::GET('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::GET('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::GET('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::POST('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::PUT('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::DELETE('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    Route::GET('/barang', [BarangController::class, 'index'])->name('barang');
+    Route::GET('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+    Route::POST('/barang/store', [BarangController::class, 'store'])->name('barang.store');
+    Route::GET('/buktiBayar', [BuktiBayarController::class, 'index'])->name('buktiBayar');
+    Route::GET('/buktiBayar/create', [BuktiBayarController::class, 'create'])->name('buktiBayar.create');
+    Route::GET('/buktiBayar/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('buktiBayar.confirm');
+    Route::POST('/buktiBayar/store', [BuktiBayarController::class, 'store'])->name('buktiBayar.store');
+    Route::PUT('/buktiBayar/update/{id}', [BuktiBayarController::class, 'update'])->name('buktiBayar.update');
+    Route::DELETE('/buktiBayar/destroy/{id}', [BuktiBayarController::class, 'destroy'])->name('buktiBayar.destroy');
 });
