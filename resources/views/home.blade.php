@@ -241,23 +241,6 @@ KasBonKu
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($barang as $brg)
-                                    <tr>
-                                        <td>{{ $brg->id }}</td>
-                                        <td>{{ $brg->barang }}</td>
-                                        <td>{{ $brg->nama }}</td>
-                                        <td>{{ $brg->prioritas }}</td>
-                                        <td>{{ $brg->harga }}</td>
-                                        <!-- <td>
-                                            <a href="{{route('siswa.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
-                                            <form action="{{route('siswa.destroy',$brg->id)}}" method="post" class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td> -->
-                                    </tr>
-                                    @endforeach
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">1</h6>
