@@ -51,7 +51,7 @@
                     <h5 class="card-title fw-semibold mb-4">Formulir Bukti Pembayaran</h5>
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('bukti_bayar.store')}}" method="post">
+                            <form action="{{route('buktiBayar.store')}}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Lengkap Siswa</label>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Jumlah Pembayaran</label>
-                                    <input type="text" class="form-control" id="harga" name="harga">
+                                    <input type="text" class="form-control" id="harga" name="harga" value="Rp 20.000" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="metode" class="form-label">Metode Pembayaran</label>

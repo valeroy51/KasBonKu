@@ -8,7 +8,7 @@ KasBonKu
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <h1>Daftar Pengajuan Bukti Pembayaran </h1>
-        <a href="{{route('bukti_bayar.payment')}}" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{route('buktiBayar.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
         @if (session('success'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>{{session('success')}}</strong>
@@ -39,9 +39,9 @@ KasBonKu
                         <td>{{ $bbr->tanggal }}</td>
                         <td>{{ $bbr->notes }}</td>
                         <td>
-                            <a href="{{route('bukti_bayar.confirm', $bbr->id)}}" class="btn btn-warning">Confirm</a>
-                            <form action="{{route('bukti_bayar.destroy', $bbr->id)}}" method="post" class="d-inline">
-                                @method('delete')
+                            <a href="{{route('buktiBayar.confirm', $bbr->id)}}" class="btn btn-warning">Confirm</a>
+                            <form action="{{route('buktiBayar.destroy', $bbr->id)}}" method="POST" class="d-inline">
+                                @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>

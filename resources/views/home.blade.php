@@ -248,7 +248,6 @@ KasBonKu
                                         <td>{{ $brg->nama }}</td>
                                         <td>{{ $brg->prioritas }}</td>
                                         <td>{{ $brg->harga }}</td>
-
                                         <!-- <td>
                                             <a href="{{route('siswa.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
                                             <form action="{{route('siswa.destroy',$brg->id)}}" method="post" class="d-inline">

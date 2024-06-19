@@ -9,8 +9,8 @@ KasBonKu
     <div class="container">
         <h1>Edit Data Siswa</h1>
 
-        <form action="{{route('siswa.update', $ssw->id)}}" method="post">
-            @method('put')
+        <form action="{{route('siswa.update', $ssw->id)}}" method="POST">
+            @method('PUT')
             @csrf
             <div class="mb-3">
                 <label for="noUrut" class="form-label">No Urut</label>

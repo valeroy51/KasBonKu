@@ -7,16 +7,21 @@ use Illuminate\Http\Request;
 
 class BuktiBayarController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $bukti_bayar = bukti_bayar::all();
 
-        return view('bukti_bayar.index', compact('bukti_bayar'));
+        return view('buktiBayar.index', compact('bukti_bayar'));
     }
 
-    public function payment()
+    public function create()
     {
-        return view('bukti_bayar.payment');
+        return view('buktiBayar.create');
     }
 
     public function store(Request $request)
@@ -32,6 +37,6 @@ class BuktiBayarController extends Controller
 
         $bukti_bayar = bukti_bayar::create($request->all());
 
-        return redirect()->route('bukti_bayar')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('buktiBayar')->with('success', 'Bukti Bayar created successfully');
     }
 }

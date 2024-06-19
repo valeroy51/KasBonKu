@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-//db
-use Illuminate\Support\Facades\DB;
-
 class SiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //index
     public function index()
     {
@@ -44,7 +46,7 @@ class SiswaController extends Controller
         $ssw = Siswa::find($id);
         return view('siswa.edit', compact('ssw'));
     }
-    
+
 
     //update
     public function update(Request $request, $id)
@@ -72,8 +74,7 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         $ssw = Siswa::find($id);
-        $ssw ->delete();
+        $ssw->delete();
         return redirect()->route('siswa')->with('success', 'Siswa deleted successfully');
     }
-    
 }
