@@ -13,8 +13,9 @@ class Controller extends BaseController
 
     public function first()
     {
-        $request = Request::all();
+        // $request = Request::all();
 
-        return view('home',compact('barang'));
+        // return view('home',compact('barang'));
+    return view('home');
     }
 }
