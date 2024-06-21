@@ -65,7 +65,7 @@ KasBonKu
                     <h5 class="card-title fw-semibold mb-4">Barang yang ingin dibeli</h5>
                     <div class="card mb-0">
                         <div class="card-body">
-                            <form action="{{route('barang.store')}}" method="POST">
+                            <form action="{{route('permintaan.store')}}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="barang" class="form-label">Nama Barang yang Diinginkan</label>

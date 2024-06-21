@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class request extends Model
+class permintaan extends Model
 {
     use HasFactory;
 
@@ -19,4 +19,6 @@ class request extends Model
        'created_at',
        'updated_at',
     ];
+
+    protected $table = 'permintaan';
 }
