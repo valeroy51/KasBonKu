@@ -74,7 +74,7 @@ Route::middleware(['verified'])->group(function () {
     Route::DELETE('/buktiBayar/destroy/{id}', [BuktiBayarController::class, 'destroy'])->name('buktiBayar.destroy');
     Route::GET('/permintaan', [PermintaanController::class, 'index'])->name('permintaan');
     Route::GET('/permintaan/create', [PermintaanController::class, 'create'])->name('permintaan.create');
-    Route::GET('/permintaan/confirm/{id}', [PermintaanController::class, 'confirm'])->name('permintaan.confirm');
+    Route::GET('/permintaan/edit/{id}', [PermintaanController::class, 'edit'])->name('permintaan.edit');
     Route::POST('/permintaan/store', [PermintaanController::class, 'store'])->name('permintaan.store');
     Route::PUT('/permintaan/update/{id}', [PermintaanController::class, 'update'])->name('permintaan.update');
     Route::DELETE('/permintaan/destroy/{id}', [PermintaanController::class, 'destroy'])->name('permintaan.destroy');

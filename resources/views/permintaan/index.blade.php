@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('title')
-List Request
+KasBonKu
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ List Request
     <div class="col-lg-12 d-flex align-items-stretch">
         <div class="card w-100">
             <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">List Permintaan Barang</h5>
+                <h5 class="card-title fw-semibold mb-4">Permintaan Barang</h5>
                 <a href="{{route('permintaan.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -41,23 +41,23 @@ List Request
                                     <h6 class="fw-semibold mb-0">Link Pembelian</h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Action</h6>
+                                    <h6 class="fw-semibold mb-0">Catatan</h6>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($permintaan as $minta)
                             <tr>
-                                <td>{{ $brg->id }}</td>
-                                <td>{{ $brg->nama }}</td>
-                                <td>{{ $brg->barang }}</td>
-                                <td>{{ $brg->harga }}</td>
-                                <td>{{ $brg->prioritas }}</td>
-                                <td>{{ $brg->link }}</td>
-                                <td>{{ $brg->catatan }}</td>
+                                <td>{{ $minta->id }}</td>
+                                <td>{{ $minta->barang }}</td>
+                                <td>{{ $minta->nama }}</td>
+                                <td>{{ $minta->prioritas }}</td>
+                                <td>{{ $minta->harga }}</td>
+                                <td>{{ $minta->link }}</td>
+                                <td>{{ $minta->catatan }}</td>
                                 <td>
-                                    <a href="{{route('permintaan.edit',$brg->id)}}" class="btn btn-warning">Edit</a>
-                                    <form action="{{route('permintaan.destroy',$brg->id)}}" method="POST" class="d-inline">
+                                    <a href="{{route('permintaan.edit',$minta->id)}}" class="btn btn-warning">Edit</a>
+                                    <form action="{{route('permintaan.destroy',$minta->id)}}" method="POST" class="d-inline">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>

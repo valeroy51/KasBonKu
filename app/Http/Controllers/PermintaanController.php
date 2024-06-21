@@ -30,7 +30,7 @@ class PermintaanController extends Controller
             'link' => 'required',
             'catatan' => 'required',
         ]);
-        $permintaan = permintaan::crate($request->all());
+        $permintaan = permintaan::create($request->all());
 
         return redirect()->route('permintaan')->with('success', 'Bukti Bayar created successfully');
     }
