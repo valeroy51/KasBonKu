@@ -29,18 +29,37 @@ Registrasi
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="noinduk" class="form-label">{{ __('Nomor Induk Siswa') }}</label>
-                                    <input type="text" class="form-control @error('noinduk') is-invalid @enderror" name="noinduk" value="{{ old('noinduk') }}" required autocomplete="noinduk" id="noinduk" aria-describedby="noindukHelp">
-                                    @error('noinduk')
+                                    <label for="kelas" class="form-label">{{ __('Kelas') }}</label>
+                                    <select id="kelas" name="kelas" class="form-select @error('kelas') is-invalid @enderror" required autocomplete="kelas" aria-describedby="kelasHelp">
+                                        <option value="10 Mipa A">10 Mipa A</option>
+                                        <option value="10 Mipa B">10 Mipa B</option>
+                                        <option value="10 Mipa C">10 Mipa C</option>
+                                        <option value="11 Mipa A">11 Mipa A</option>
+                                        <option value="11 Mipa B">11 Mipa B</option>
+                                        <option value="11 Mipa C">11 Mipa C</option>
+                                        <option value="12 Mipa A">12 Mipa A</option>
+                                        <option value="12 Mipa B">12 Mipa B</option>
+                                        <option value="12 Mipa C">12 Mipa C</option>
+                                        <option value="10 IPS A">10 IPS A</option>
+                                        <option value="10 IPS B">10 IPS B</option>
+                                        <option value="10 IPS C">10 IPS C</option>
+                                        <option value="11 IPS A">11 IPS A</option>
+                                        <option value="11 IPS B">11 IPS B</option>
+                                        <option value="11 IPS C">11 IPS C</option>
+                                        <option value="12 IPS A">12 IPS A</option>
+                                        <option value="12 IPS B">12 IPS B</option>
+                                        <option value="12 IPS C">12 IPS C</option>
+                                    </select>
+                                    @error('kelas')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="kelas" class="form-label">{{ __('Kelas') }}</label>
-                                    <input type="kelas" class="form-control @error('kelas') is-invalid @enderror" name="kelas" value="{{ old('kelas') }}" required autocomplete="kelas" id="kelas" aria-describedby="kelasHelp">
-                                    @error('kelas')
+                                    <label for="absen" class="form-label">{{ __('Nomor Induk Siswa') }}</label>
+                                    <input type="number" class="form-control @error('absen') is-invalid @enderror" name="absen" value="{{ old('absen') }}" required autocomplete="absen" id="absen" aria-describedby="absenHelp" min="1" max="36" oninput="validity.valid||(value='');">
+                                    @error('absen')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
