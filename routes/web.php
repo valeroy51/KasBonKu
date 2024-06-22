@@ -66,7 +66,7 @@ Route::middleware(['verified'])->group(function () {
     Route::POST('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
     Route::PUT('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::DELETE('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
-    Route::GET('/buktiBayar', [BuktiBayarController::class, 'index'])->name('buktiBayar');
+    Route::GET('/buktiBayar', [BuktiBayarController::class, 'index'])->name('buktiBayar.index');
     Route::GET('/buktiBayar/create', [BuktiBayarController::class, 'create'])->name('buktiBayar.create');
     Route::GET('/buktiBayar/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('buktiBayar.confirm');
     Route::POST('/buktiBayar/store', [BuktiBayarController::class, 'store'])->name('buktiBayar.store');

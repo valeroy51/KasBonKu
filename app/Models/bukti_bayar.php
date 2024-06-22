@@ -10,6 +10,7 @@ class bukti_bayar extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'nama',  
         'kelas', 
         'harga',
@@ -21,4 +22,7 @@ class bukti_bayar extends Model
     ];
 
     protected $table = 'bukti_bayar';
+    protected $primaryKey = 'id'; // Atur primary key model sebagai 'id'
+    public $incrementing = false; // Nonaktifkan incrementing karena menggunakan UUID
+    protected $keyType = 'string'; 
 }

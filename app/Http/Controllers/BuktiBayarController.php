@@ -16,7 +16,7 @@ class BuktiBayarController extends Controller
     {
         $bukti_bayar = bukti_bayar::all();
 
-        return view('buktiBayar.index', compact('bukti_bayar'));
+        return view('buktiBayar.index', ['bukti_bayar' => $bukti_bayar]);
     }
 
     public function create()
@@ -37,6 +37,35 @@ class BuktiBayarController extends Controller
 
         $bukti_bayar = bukti_bayar::create($request->all());
 
-        return redirect()->route('buktiBayar')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('buktiBayar.index')->with('success', 'Bukti Bayar created successfully');
+    }
+
+    public function confirm($id)
+    {
+        // Mencari data berdasarkan id
+        $bukti_bayar = bukti_bayar::find($id);
+
+        if ($bukti_bayar) {
+            // Mengupdate status menjadi 'confirmed'
+            $bukti_bayar->status = 'confirmed';
+            $bukti_bayar->save();
+
+            return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran dikonfirmasi.');
+        } else {
+            return redirect()->route('buktiBayar.index')->with('error', 'Bukti Pembayaran tidak ditemukan.');
+        }
+    }
+
+    public function destroy($id)
+    {
+        $buktiBayar = bukti_bayar::findOrFail($id);
+
+        if (!$buktiBayar) {
+            return redirect()->route('buktiBayar.index')->with('error', 'Bukti Pembayaran tidak ditemukan.');
+        }
+
+        $buktiBayar->delete();
+
+        return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran berhasil dihapus.');
     }
 }

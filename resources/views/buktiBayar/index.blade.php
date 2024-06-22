@@ -13,10 +13,10 @@ List Bukti Bayar
                 <h5 class="card-title fw-semibold mb-4">List Bukti Pembayaran</h5>
                 <a href="{{route('buktiBayar.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{session('success')}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endif
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
@@ -51,23 +51,32 @@ List Bukti Bayar
                         </thead>
                         <tbody>
                             @foreach ($bukti_bayar as $bbr)
-                            <tr>
-                                <td>{{ $bbr->id }}</td>
-                                <td>{{ $bbr->nama }}</td>
-                                <td>{{ $bbr->kelas }}</td>
-                                <td>{{ $bbr->harga }}</td>
-                                <td>{{ $bbr->metode }}</td>
-                                <td>{{ $bbr->tanggal }}</td>
-                                <td>{{ $bbr->notes }}</td>
-                                <td>
-                                    <a href="{{route('buktiBayar.confirm', $bbr->id)}}" class="btn btn-warning">Confirm</a>
-                                    <form action="{{route('buktiBayar.destroy', $bbr->id)}}" method="POST" class="d-inline">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $bbr->id }}</td>
+                                    <td>{{ $bbr->nama }}</td>
+                                    <td>{{ $bbr->kelas }}</td>
+                                    <td>{{ $bbr->harga }}</td>
+                                    <td>{{ $bbr->metode }}</td>
+                                    <td>{{ $bbr->tanggal }}</td>
+                                    <td>{{ $bbr->notes }}</td>
+                                    <td>
+                                        @if ($bbr->status == 'confirmed')
+                                            Confirmed
+                                        @else
+                                            <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success">Confirm</button>
+                                            </form>
+                                            <form action="{{ route('buktiBayar.destroy', $bbr->id) }}" method="POST"
+                                                class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
