@@ -78,4 +78,7 @@ Route::middleware(['verified'])->group(function () {
     Route::POST('/permintaan/store', [PermintaanController::class, 'store'])->name('permintaan.store');
     Route::PUT('/permintaan/update/{id}', [PermintaanController::class, 'update'])->name('permintaan.update');
     Route::DELETE('/permintaan/destroy/{id}', [PermintaanController::class, 'destroy'])->name('permintaan.destroy');
+    Route::GET('/userProfile', function () {
+        return view('userProfile');
+    })->name('userProfile');
 });
