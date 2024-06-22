@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('bukti_bayar', function (Blueprint $table) {
-            $table->string('status', 20)->default('pending')->after('catatan'); // Menambah kolom status
+        Schema::table('permintaan', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('bukti_bayar', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('permintaan', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };
