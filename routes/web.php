@@ -68,13 +68,13 @@ Route::middleware(['verified'])->group(function () {
     Route::DELETE('/siswa/destroy/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::GET('/buktiBayar', [BuktiBayarController::class, 'index'])->name('buktiBayar.index');
     Route::GET('/buktiBayar/create', [BuktiBayarController::class, 'create'])->name('buktiBayar.create');
-    Route::GET('/buktiBayar/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('buktiBayar.confirm');
+    Route::POST('/buktiBayar/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('buktiBayar.confirm');
     Route::POST('/buktiBayar/store', [BuktiBayarController::class, 'store'])->name('buktiBayar.store');
     Route::PUT('/buktiBayar/update/{id}', [BuktiBayarController::class, 'update'])->name('buktiBayar.update');
     Route::DELETE('/buktiBayar/destroy/{id}', [BuktiBayarController::class, 'destroy'])->name('buktiBayar.destroy');
     Route::GET('/permintaan', [PermintaanController::class, 'index'])->name('permintaan');
     Route::GET('/permintaan/create', [PermintaanController::class, 'create'])->name('permintaan.create');
-    Route::GET('/permintaan/edit/{id}', [PermintaanController::class, 'edit'])->name('permintaan.edit');
+    Route::POST('/permintaan/confirm/{id}', [PermintaanController::class, 'confirm'])->name('permintaan.confirm');
     Route::POST('/permintaan/store', [PermintaanController::class, 'store'])->name('permintaan.store');
     Route::PUT('/permintaan/update/{id}', [PermintaanController::class, 'update'])->name('permintaan.update');
     Route::DELETE('/permintaan/destroy/{id}', [PermintaanController::class, 'destroy'])->name('permintaan.destroy');

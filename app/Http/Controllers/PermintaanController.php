@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\permintaan;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,6 @@ class PermintaanController extends Controller
         $permintaan = Permintaan::all();
 
         return view('permintaan.index', compact('permintaan'));
-
     }
 
     public function create()
@@ -33,5 +33,29 @@ class PermintaanController extends Controller
         $permintaan = permintaan::create($request->all());
 
         return redirect()->route('permintaan')->with('success', 'Bukti Bayar created successfully');
+    }
+
+    public function destroy($id)
+    {
+        $minta = permintaan::find($id);
+        $minta->delete();
+        return redirect()->route('permintaan')
+            ->with('success', 'Permintaan berhasil dihapus');
+    }
+
+    public function confirm($id)
+    {
+        // Mencari data berdasarkan id
+        $minta = permintaan::find($id);
+
+        if ($minta) {
+            // Mengupdate status menjadi 'confirmed'
+            $minta->status = 'confirmed';
+            $minta->save();
+
+            return redirect()->route('permintaan')->with('success', 'Permintaan pembelian barang dikonfirmasi.');
+        } else {
+            return redirect()->route('permintaan')->with('error', 'Permintaan pembelian barang tidak ditemukan.');
+        }
     }
 }

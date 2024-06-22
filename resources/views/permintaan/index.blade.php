@@ -43,6 +43,9 @@ KasBonKu
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Catatan</h6>
                                 </th>
+                                <th scope="col" class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Action</h6>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,12 +59,20 @@ KasBonKu
                                 <td>{{ $minta->link }}</td>
                                 <td>{{ $minta->catatan }}</td>
                                 <td>
-                                    <a href="{{route('permintaan.edit',$minta->id)}}" class="btn btn-warning">Edit</a>
+                                @if ($minta->status == 'confirmed')
+                                            Confirmed
+                                @else                                            
+                                <form action="{{ route('permintaan.confirm', $minta->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Confirm</button>
+                                 </form>
                                     <form action="{{route('permintaan.destroy',$minta->id)}}" method="POST" class="d-inline">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
+                                @endif
                                 </td>
                             </tr>
                             @endforeach
