@@ -56,16 +56,19 @@ class BuktiBayarController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function reject($id)
     {
-        $buktiBayar = bukti_bayar::findOrFail($id);
+        // Mencari data berdasarkan id
+        $bukti_bayar = bukti_bayar::find($id);
 
-        if (!$buktiBayar) {
+        if ($bukti_bayar) {
+            // Mengupdate status menjadi 'rejected'
+            $bukti_bayar->status = 'rejected';
+            $bukti_bayar->save();
+
+            return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran ditolak.');
+        } else {
             return redirect()->route('buktiBayar.index')->with('error', 'Bukti Pembayaran tidak ditemukan.');
         }
-
-        $buktiBayar->delete();
-
-        return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran berhasil dihapus.');
     }
 }
