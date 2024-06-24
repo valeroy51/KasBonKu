@@ -11,13 +11,6 @@ List Siswa
         <div class="card w-100">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">List Anggota Kelas</h5>
-                <a href="{{route('buktiBayar.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
-                @if (session('success'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
@@ -42,14 +35,6 @@ List Siswa
                                 <td>{{ $usr->id }}</td>
                                 <td>{{ $usr->name }}</td>
                                 <td>{{ $usr->absen }}</td>
-                                <td>
-                                    <a href="{{route('buktiBayar.confirm', $usr->id)}}" class="btn btn-warning">Confirm</a>
-                                    <form action="{{route('buktiBayar.destroy', $usr->id)}}" method="POST" class="d-inline">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>
