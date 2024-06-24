@@ -12,8 +12,8 @@ Profile
       <div class="col">
         <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li> -->
             <li class="breadcrumb-item active" aria-current="page">User Profile</li>
           </ol>
         </nav>
@@ -23,7 +23,7 @@ Profile
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+            <img src="{{ asset('../assets/images/profile/cleanface.png')}}" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">Michael Jackson</h5>
             <p class="text-muted mb-1">Full Stack Developer</p>

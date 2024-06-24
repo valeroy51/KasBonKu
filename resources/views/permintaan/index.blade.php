@@ -12,38 +12,38 @@ KasBonKu
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Permintaan Barang</h5>
                 <form action="/permintaan/filter" method="GET">
-                            @csrf
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <label for="" class="form-label">Nama</label>
-                                    <input name="nama" type="text" class="form-control" placeholder="Nama" value="{{isset($_GET['nama']) ? $_GET['nama'] : ''}}">  
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="form-label">Harga</label>
-                                    <input name="harga" type="number" class="form-control" placeholder="Harga" value="{{isset($_GET['harga']) ? $_GET['harga'] : ''}}">  
-                                </div>
-                                <div class="col-sm-3">
-                                    <label for="" class="form-label">Prioritas</label>
-                                    <select name="prioritas" class="form-select">
-                                        <option value="">-</option>
-                                        <option value="low" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'low'}}">Low</option>
-                                        <option value="medium" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'medium'}}">Medium</option>
-                                        <option value="high" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'high'}}">High</option>
-                                        <option value="critical" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'critical'}}">Critical</option>
-                                    </select>
-                                 </div>
-                                <div class="col-sm-3">
-                                    <button type="submit" class="btn btn-primary mt-4">Search</button>
-                                </div>
-                            </div>
-                        </form>
+                    @csrf
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <label for="" class="form-label">Nama</label>
+                            <input name="nama" type="text" class="form-control" placeholder="Nama" value="{{isset($_GET['nama']) ? $_GET['nama'] : ''}}">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="" class="form-label">Harga</label>
+                            <input name="harga" type="number" class="form-control" placeholder="Harga" value="{{isset($_GET['harga']) ? $_GET['harga'] : ''}}">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="" class="form-label">Prioritas</label>
+                            <select name="prioritas" class="form-select">
+                                <option value="">-</option>
+                                <option value="low" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'low'}}">Low</option>
+                                <option value="medium" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'medium'}}">Medium</option>
+                                <option value="high" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'high'}}">High</option>
+                                <option value="critical" selected="{{isset($_GET['prioritas']) && $_GET['prioritas'] == 'critical'}}">Critical</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary mt-4">Search</button>
+                        </div>
+                    </div>
+                </form>
                 <a href="{{route('permintaan.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{session('success')}}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                @endif  
+                @endif
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
@@ -77,45 +77,70 @@ KasBonKu
                         <tbody>
                             @forelse ($permintaan as $minta)
                             <tr>
-                                <td>{{ $minta->id }}</td>
-                                <td>{{ $minta->barang }}</td>
-                                <td>{{ $minta->nama }}</td>
-                                <td>{{ $minta->prioritas }}</td>
-                                <td>{{ $minta->harga }}</td>
-                                <td>{{ $minta->link }}</td>
-                                <td>{{ $minta->catatan }}</td>
-                                <td>
-                                @if ($minta->status == 'confirmed')
-                                            Confirmed
-                                @else                                            
-                                <form action="{{ route('permintaan.confirm', $minta->id) }}" method="POST"
-                                        class="d-inline">
+                                <td class="border-bottom-0">{{ $minta->id }}</td>
+                                <td class="border-bottom-0">{{ $minta->barang }}</td>
+                                <td class="border-bottom-0">{{ $minta->nama }}</td>
+                                <td class="border-bottom-0">
+                                    @if ($minta->prioritas == 'low')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
+                                    </div>
+                                    @elseif ($minta->prioritas == 'medium')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
+                                    </div>
+                                    @elseif ($minta->prioritas == 'high')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-danger rounded-3 fw-semibold">High</span>
+                                    </div>
+                                    @else
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
+                                    </div>
+                                    @endif
+                                </td>
+                                <td class="border-bottom-0">{{ $minta->harga }}</td>
+                                <td class="border-bottom-0">{{ $minta->link }}</td>
+                                <td class="border-bottom-0">{{ $minta->catatan }}</td>
+                                <td class="border-bottom-0">
+                                    @if ($minta->status == 'confirmed')
+                                    Confirmed
+                                    @else
+                                    <form action="{{ route('permintaan.confirm', $minta->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         <button type="submit" class="btn btn-success">Confirm</button>
-                                 </form>
+                                    </form>
                                     <form action="{{route('permintaan.destroy',$minta->id)}}" method="POST" class="d-inline">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                @endif
+                                    @endif
                                 </td>
-                                <td>
-                                @if ($minta->prioritas == 'low')
-                                     <span class="badge bg-primary w-100">Low</span>
-                                 @elseif ($minta->prioritas == 'medium')
-                                     <span class="badge bg-warning w-100">Medium</span>
-                                 @elseif ($minta->prioritas == 'high')
-                                     <span class="badge bg-warning w-100">High</span>
-                                 @else
-                                    <span class="badge bg-warning w-100">Critical</span>
-                                @endif 
+                                <!-- <td class="border-bottom-0">
+                                    @if ($minta->prioritas == 'low')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
+                                    </div>
+                                    @elseif ($minta->prioritas == 'medium')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
+                                    </div>
+                                    @elseif ($minta->prioritas == 'high')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-danger rounded-3 fw-semibold">High</span>
+                                    </div>
+                                    @else
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
+                                    </div>
+                                    @endif
                                 </td>
                             </tr>
                             @empty
-                                    <tr>
-                                        <td colspan="10" class="text-center">No request found</td>
-                                    </tr>
+                            <tr>
+                                <td colspan="10" class="text-center">No request found</td> -->
+                            </tr>
                             @endforelse
                         </tbody>
                     </table>

@@ -15,6 +15,13 @@ class PermintaanController extends Controller
         return view('permintaan.index', compact('permintaan'));
     }
 
+    public function first()
+    {   
+        $permintaan = Permintaan::all();
+
+        return view('home', compact('permintaan'));
+    }
+
     public function filter(Request $request)
     {
         $prioritas = $request->input('prioritas');
@@ -64,7 +71,7 @@ class PermintaanController extends Controller
         ]);
         $permintaan = permintaan::create($request->all());
 
-        return redirect()->route('permintaan')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('permintaan.index')->with('success', 'Bukti Bayar created successfully');
     }
 
     public function destroy($id)
