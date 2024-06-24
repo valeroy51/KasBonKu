@@ -9,10 +9,42 @@ class PermintaanController extends Controller
 {
     //index
     public function index()
-    {
+    {   
         $permintaan = Permintaan::all();
 
         return view('permintaan.index', compact('permintaan'));
+    }
+
+    public function filter(Request $request)
+    {
+        $prioritas = $request->input('prioritas');
+        $permintaan = Permintaan::query();
+        // $query = Permintaan::query();
+
+        // filter by nama
+        $permintaan->when($request->nama, function($query) use ($request){
+            return $query->where('nama', 'like', '%'.$request->nama.'%');
+        });
+        
+
+        // filter by harga
+        $permintaan->when($request->harga, function($query) use ($request){
+            return $query->where('harga', '>=', $request->harga);
+        });
+
+        // filter by prioritas
+        $permintaan->when($request->prioritas, function($query) use ($request){
+            return $query->wherePrioritas($request->prioritas);
+        });
+
+        // if (!empty($prioritas)) {
+        //     $query->where('prioritas', $prioritas);
+        // }
+
+        // $hasil = $query->get();
+
+        return view('permintaan.index', ['permintaan' => $permintaan->paginate(10)]);
+
     }
 
     public function create()
