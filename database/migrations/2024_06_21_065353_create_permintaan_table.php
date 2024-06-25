@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('nama');
             $table->String('barang');
-            $table->String('harga');
+            $table->integer('harga');
             $table->String('prioritas');
             $table->String('link');
             $table->String('catatan');

@@ -62,7 +62,7 @@ Profile
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
+                <p class="mb-0">Nama Lengkap</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">Johnatan Smith</p>
@@ -80,7 +80,7 @@ Profile
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0">No Handphone</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">(097) 234-5678</p>
@@ -98,7 +98,7 @@ Profile
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Address</p>
+                <p class="mb-0">Alamat Rumah</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>

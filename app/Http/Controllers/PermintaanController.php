@@ -10,7 +10,7 @@ class PermintaanController extends Controller
     //index
     public function index()
     {   
-        $permintaan = Permintaan::all();
+        $permintaan = Permintaan::paginate(10);
 
         return view('permintaan.index', compact('permintaan'));
     }
@@ -71,7 +71,7 @@ class PermintaanController extends Controller
         ]);
         $permintaan = permintaan::create($request->all());
 
-        return redirect()->route('permintaan.index')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('permintaan.create')->with('success', 'Bukti Bayar created successfully');
     }
 
     public function destroy($id)
@@ -92,9 +92,9 @@ class PermintaanController extends Controller
             $minta->status = 'confirmed';
             $minta->save();
 
-            return redirect()->route('permintaan')->with('success', 'Permintaan pembelian barang dikonfirmasi.');
+            return redirect()->route('permintaan.index')->with('success', 'Permintaan pembelian barang dikonfirmasi.');
         } else {
-            return redirect()->route('permintaan')->with('error', 'Permintaan pembelian barang tidak ditemukan.');
+            return redirect()->route('permintaan.index')->with('error', 'Permintaan pembelian barang tidak ditemukan.');
         }
     }
 }
