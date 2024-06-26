@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/permintaan')}}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{url('/permintaan/create')}}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>
