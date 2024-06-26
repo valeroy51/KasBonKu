@@ -77,59 +77,34 @@ Profile
         <div class="col-lg-8">
           <div class="card mb-4">
             <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Nama Lengkap</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ $user->name }}</p>
-                </div>
+            <form action="/" method="POST">
+              @csrf
+              <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama anda">
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ $user->email }}</p>
-                </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" id="email" name="email" class="form-control" placeholder="Masukkan alamat email">
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Kelas</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ $user->kelas }}</p>
-                </div>
+              <div class="mb-3">
+                  <label for="kelas" class="form-label">Kelas</label>
+                  <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Masukkan kelas anda">
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Absen</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">{{ $user->absen }}</p>
-                </div>
+              <div class="mb-3">
+                  <label for="absen" class="form-label">Absen</label>
+                  <input type="text" id="absen" name="absen" class="form-control" placeholder="Masukkan no absen">
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Alamat Rumah</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                </div>
+              <div class="mb-3">
+                  <label for="alamat" class="form-label">Alamat Rumah</label>
+                  <textarea class="form-control" id="alamat" rows="2" name="alamat" placeholder="Masukkan alamat anda"></textarea>
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <button type="submit" class="btn btn-danger mb-0">Delete Account</button>
-                </div>
-                <div class="col-sm-9">
-                  <button type="submit" class="btn btn-primary mb-0 col-sm-9">Update Data Kamu</button>
-                </div>
+              <div class="mb-3" id="uploadProfileImage">
+                  <label for="imageProfile" class="form-label">Unggah profile image</label>
+                  <input type="file" class="form-control" id="imageProfile" accept="image/jpeg">
               </div>
+              <button type="submit" class="btn btn-primary">Konfirmasi Perubahan</button>
+          </form>
             </div>
           </div>
         </div>
