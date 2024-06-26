@@ -67,15 +67,3 @@ Route::middleware(['verified'])->group(function () {
 
     Route::get('/userProfile/{name}', [SiswaController::class, 'profile'])->name('userProfile');
 });
-
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', function () {
-        return 'Halaman Admin'; 
-    });
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/user', function () {
-        return 'Halaman Pengguna Biasa';
-    });
-});

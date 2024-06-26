@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class SiswaController extends Controller
 {
@@ -29,6 +31,13 @@ class SiswaController extends Controller
         }
 
         return view('userProfile', compact('user'));
+    }
+
+    public function profileChanges()
+    {
+        $id = Auth::user()->id;
+        $profileData = User::find();
+        return view('userProfiel', compact('profileData'));
     }
 
     //create

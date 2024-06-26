@@ -53,7 +53,7 @@ KasBonKu
                                     <textarea class="form-control" id="catatan" rows="3" name="catatan" placeholder="Masukkan catatan tambahan"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                            </form> 
                         </div>
                     </div>
                 </div>
