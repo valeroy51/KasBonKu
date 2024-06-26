@@ -37,7 +37,7 @@ class BuktiBayarController extends Controller
 
         $bukti_bayar = bukti_bayar::create($request->all());
 
-        return redirect()->route('buktiBayar.index')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('buktiBayar.create')->with('success', 'Pengiriman Bukti Pembayaran Berhasil');
     }
 
     public function confirm($id)
