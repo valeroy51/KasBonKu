@@ -21,7 +21,7 @@ Profile
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="{{ asset('../assets/images/profile/cleanface.png')}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <img src="{{(!empty($profileData->photo))?url('')}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">{{ $user->name }}</h5>
               <p class="text-muted mb-1">{{ $user->kelas }}</p>
               <p class="text-muted mb-4">{{ $user->absen }}</p>
