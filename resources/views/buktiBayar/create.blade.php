@@ -11,6 +11,12 @@
                 <h5 class="card-title fw-semibold mb-4">Formulir Bukti Pembayaran</h5>
                 <div class="card">
                     <div class="card-body">
+                        @if (session('success'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{session('success')}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <form action="{{route('buktiBayar.store')}}" method="POST">
                             @csrf
                             <div class="mb-3">

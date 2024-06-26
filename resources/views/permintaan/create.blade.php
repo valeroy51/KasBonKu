@@ -15,6 +15,12 @@ KasBonKu
                     <h5 class="card-title fw-semibold mb-4">Barang yang ingin dibeli</h5>
                     <div class="card mb-0">
                         <div class="card-body">
+                            @if (session('success'))
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>{{session('success')}}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
                             <form action="{{route('permintaan.store')}}" method="POST">
                                 @csrf
                                 <div class="mb-3">
@@ -47,7 +53,7 @@ KasBonKu
                                     <textarea class="form-control" id="catatan" rows="3" name="catatan" placeholder="Masukkan catatan tambahan"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                            </form> 
                         </div>
                     </div>
                 </div>

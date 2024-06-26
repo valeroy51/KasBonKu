@@ -71,7 +71,7 @@ class PermintaanController extends Controller
         ]);
         $permintaan = permintaan::create($request->all());
 
-        return redirect()->route('permintaan.create')->with('success', 'Bukti Bayar created successfully');
+        return redirect()->route('permintaan.create')->with('success', 'Pengiriman Request Barang Berhasil');
     }
 
     public function destroy($id)

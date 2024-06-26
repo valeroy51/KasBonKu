@@ -6,7 +6,19 @@
 <body>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-        @include('layouts.menuadmin')
+
+        @auth
+        @if (auth()->user()->admin)
+        @include('layouts.menuadmin') {{-- Menu untuk admin --}}
+        @else
+        @include('layouts.menu') {{-- Menu untuk pengguna biasa --}}
+        @endif
+        @endauth
+
+        @guest
+        @include('layouts.menu') {{-- Menu untuk pengguna yang tidak login --}}
+        @endguest
+
         <!--  Main wrapper -->
         <div class="body-wrapper">
 
