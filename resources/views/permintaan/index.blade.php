@@ -93,6 +93,10 @@ KasBonKu
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="badge bg-danger rounded-3 fw-semibold">High</span>
                                     </div>
+                                    @elseif ($minta->prioritas == 'high')
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
+                                    </div>
                                     @else
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
@@ -117,29 +121,10 @@ KasBonKu
                                     </form>
                                     @endif
                                 </td>
-                                <!-- <td class="border-bottom-0">
-                                    @if ($minta->prioritas == 'low')
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
-                                    </div>
-                                    @elseif ($minta->prioritas == 'medium')
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
-                                    </div>
-                                    @elseif ($minta->prioritas == 'high')
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-danger rounded-3 fw-semibold">High</span>
-                                    </div>
-                                    @else
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
-                                    </div>
-                                    @endif
-                                </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="10" class="text-center">No request found</td> -->
+                                <td colspan="4" class="text-center">No user found</td>
                             </tr>
                             @endforelse
                         </tbody>
