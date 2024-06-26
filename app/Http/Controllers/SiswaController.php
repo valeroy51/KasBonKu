@@ -19,12 +19,23 @@ class SiswaController extends Controller
 
         return view('siswa.index', compact('users'));
     }
+
+    public function profile($name)
+    {
+        $user = User::where('name', $name)->first();
+        
+        if (!$user) {
+            abort(404);
+        }
+
+        return view('userProfile', compact('user'));
+    }
+
     //create
     public function create()
     {
         return view('siswa.create');
     }
-
     // //store
     // public function store(Request $request)
     // {

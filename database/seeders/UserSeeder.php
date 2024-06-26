@@ -20,9 +20,10 @@ class UserSeeder extends Seeder
             'email' => 'valeroy51@gmail.com',
             'kelas' => 'Admin Class',
             'absen' => 999,
-            'password' => Hash::make('admin'), // Pastikan Anda menggunakan Hash untuk menyimpan password
+            'password' => Hash::make('admin'), 
             'admin' => true,
-            'email_verified_at' =>  '2004-09-28 00:00:00'
+            'email_verified_at' =>  '2004-09-28 00:00:00',
+            'alamat' =>  '-'
         ]);
     }
 }
