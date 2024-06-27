@@ -99,7 +99,7 @@ class SiswaController extends Controller
         // Ubah penanganan pembaruan user dengan menggunakan ID yang sesuai
         User::where('email', $email)->update($updateData);
 
-        return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail]);
+        return redirect()->route('userProfile', ['hashedEmail' => $hashedEmail]);
     }
 
 

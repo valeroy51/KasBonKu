@@ -54,13 +54,13 @@ KasBonKu
                                     <h6 class="fw-semibold mb-0">Nama Barang</h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">@sortablelink('nama', 'Nama Siswa')</h6>
+                                <h6 class="fw-semibold mb-0">@sortablelink('nama', 'Nama Siswa') <i class="bi bi-filter"></i></h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Prioritas</h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">@sortablelink('harga', 'Harga')</h6>
+                                <h6 class="fw-semibold mb-0">@sortablelink('harga', 'Harga') <i class="bi bi-filter"></i></h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Link Pembelian</h6>
