@@ -77,19 +77,18 @@ List Bukti Bayar
                                 <td>{{ $bbr->metode }}</td>
                                 <td>{{ $bbr->tanggal }}</td>
                                 <td>{{ $bbr->notes }}</td>
-                                <td>
+                                <td class="border-bottom-0">
                                     @if ($bbr->status == 'confirmed')
                                     Confirmed
-                                    @elseif ($bbr->status == 'rejected')
-                                    Rejected
                                     @else
                                     <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         <button type="submit" class="btn btn-success">Confirm</button>
                                     </form>
-                                    <form action="{{ route('buktiBayar.reject', $bbr->id) }}" method="POST" class="d-inline">
+                                    <form action="{{route('buktiBayar.destroy',$bbr->id)}}" method="POST" class="d-inline">
+                                        @method('DELETE')
                                         @csrf
-                                        <button type="submit" class="btn btn-warning">Reject</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                     @endif
                                 </td>
