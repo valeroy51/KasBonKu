@@ -24,7 +24,7 @@ Auth::routes(['verify' => true]);
 Route::GET('/', [PermintaanController::class, 'first'])->name('home');
 
 Route::GET('/userProfile/{hashedEmail}', [SiswaController::class, 'profile'])->name('userProfile');
-Route::GET('/userProfile/{hashedEmail}', [SiswaController::class, 'profile'])->name('userProfile');
+Route::put('/userProfile/profileStore/{hashedEmail}', [SiswaController::class, 'profileStore'])->name('profileStore');
 
 Route::middleware(['verified'])->group(function () {
     Route::GET('/home', [PermintaanController::class, 'first'])->name('home');
