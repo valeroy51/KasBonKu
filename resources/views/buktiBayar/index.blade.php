@@ -111,7 +111,7 @@ List Bukti Bayar
 
         let rows = document.getElementById('dataTable').getElementsByTagName('tr');
 
-        for (let i = 1; i < rows.length; i++) { // Mulai dari 1 untuk melewati header
+        for (let i = 1; i < rows.length; i++) { // Mulai dariP 1 untuk melewati header
             let cells = rows[i].getElementsByTagName('td');
             let match = true;
 
