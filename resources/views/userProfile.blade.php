@@ -21,7 +21,7 @@ Profile
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="{{(!empty($profileData->photo))?url('')}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <img src="" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">{{ $user->name }}</h5>
               <p class="text-muted mb-1">{{ $user->kelas }}</p>
               <p class="text-muted mb-4">{{ $user->absen }}</p>
@@ -77,34 +77,35 @@ Profile
         <div class="col-lg-8">
           <div class="card mb-4">
             <div class="card-body">
-            <form action="/" method="POST">
-              @csrf
-              <div class="mb-3">
-                  <label for="nama" class="form-label">Nama</label>
-                  <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama anda">
-              </div>
-              <div class="mb-3">
+              @php
+              $hashedEmail = Crypt::encryptString(Auth::user()->email);
+              @endphp
+              <form action="{{ route('profileStore', ['hashedEmail' => $hashedEmail]) }}" method="POST">
+
+                @method('PUT')
+                @csrf
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nama</label>
+                  <input type="text" id="name" name="name" class="form-control" value="{{$user -> name}}">
+                </div>
+                <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="text" id="email" name="email" class="form-control" placeholder="Masukkan alamat email">
-              </div>
-              <div class="mb-3">
+                  <input type="email" id="email" name="email" class="form-control" value="{{$user -> email}}">
+                </div>
+                <div class="mb-3">
                   <label for="kelas" class="form-label">Kelas</label>
-                  <input type="text" id="kelas" name="kelas" class="form-control" placeholder="Masukkan kelas anda">
-              </div>
-              <div class="mb-3">
+                  <input type="text" id="kelas" name="kelas" class="form-control" value="{{$user -> kelas}}">
+                </div>
+                <div class="mb-3">
                   <label for="absen" class="form-label">Absen</label>
-                  <input type="text" id="absen" name="absen" class="form-control" placeholder="Masukkan no absen">
-              </div>
-              <div class="mb-3">
+                  <input type="text" id="absen" name="absen" class="form-control" value="{{$user -> absen}}">
+                </div>
+                <div class="mb-3">
                   <label for="alamat" class="form-label">Alamat Rumah</label>
-                  <textarea class="form-control" id="alamat" rows="2" name="alamat" placeholder="Masukkan alamat anda"></textarea>
-              </div>
-              <div class="mb-3" id="uploadProfileImage">
-                  <label for="imageProfile" class="form-label">Unggah profile image</label>
-                  <input type="file" class="form-control" id="imageProfile" accept="image/jpeg">
-              </div>
-              <button type="submit" class="btn btn-primary">Konfirmasi Perubahan</button>
-          </form>
+                  <input class="form-control" id="alamat" rows="2" name="alamat" value="{{$user -> alamat}}"></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Konfirmasi Perubahan</button>
+              </form>
             </div>
           </div>
         </div>
