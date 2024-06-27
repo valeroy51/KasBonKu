@@ -9,7 +9,7 @@ List Bukti Bayar
     <!-- Row 1 -->
     <div class="col-lg-12 d-flex align-items-stretch">
         <div class="card w-100">
-            <div class="card-body p-4">
+            <div class="card-body p-6">
                 <h5 class="card-title fw-semibold mb-4">List Bukti Pembayaran</h5>
                 @if (session('success'))
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,21 +17,26 @@ List Bukti Bayar
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
+                
                 <!-- Filter Form -->
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <input type="text" id="searchName" class="form-control" placeholder="Nama Siswa">
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <label for="searchName" class="form-label">Nama</label>
+                        <input type="text" id="searchName" class="form-control" placeholder="Nama">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <label for="searchClass" class="form-label">Kelas</label>
                         <input type="text" id="searchClass" class="form-control" placeholder="Kelas">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                        <label for="searchDate" class="form-label">Tanggal</label>
                         <input type="date" id="searchDate" class="form-control" placeholder="Tanggal">
                     </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button id="searchButton" class="btn btn-primary">Search</button>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <button id="searchButton" class="btn btn-primary">Search</button>
-                </div>
+                
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle" id="dataTable">
                         <thead class="text-dark fs-4">
@@ -40,7 +45,7 @@ List Bukti Bayar
                                     <h6 class="fw-semibold mb-0">Id</h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Nama Siswa</h6>
+                                    <h6 class="fw-semibold mb-0">Nama</h6>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Kelas</h6>
@@ -78,13 +83,11 @@ List Bukti Bayar
                                         @elseif ($bbr->status == 'rejected')
                                             Rejected
                                         @else
-                                            <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST"
-                                                class="d-inline">
+                                            <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success">Confirm</button>
                                             </form>
-                                            <form action="{{ route('buktiBayar.reject', $bbr->id) }}" method="POST"
-                                                class="d-inline">
+                                            <form action="{{ route('buktiBayar.reject', $bbr->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 <button type="submit" class="btn btn-warning">Reject</button>
                                             </form>
@@ -113,21 +116,22 @@ List Bukti Bayar
             let cells = rows[i].getElementsByTagName('td');
             let match = true;
 
-            // Check Nama
+            // Filter berdasarkan Nama Siswa
             if (searchName && !cells[1].textContent.toLowerCase().includes(searchName)) {
                 match = false;
             }
-            
-            // Check Kelas
+
+            // Filter berdasarkan Kelas
             if (searchClass && !cells[2].textContent.toLowerCase().includes(searchClass)) {
                 match = false;
             }
-            
-            // Check Tanggal
+
+            // Filter berdasarkan Tanggal
             if (searchDate && cells[5].textContent !== searchDate) {
                 match = false;
             }
-            
+
+            // Tampilkan atau sembunyikan baris berdasarkan hasil pencarian
             rows[i].style.display = match ? '' : 'none';
         }
     });

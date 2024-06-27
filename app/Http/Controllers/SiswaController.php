@@ -46,12 +46,12 @@ class SiswaController extends Controller
         }
     }
 
-    public function profileChanges()
-    {
-        $id = Auth::user()->id;
-        $profileData = User::find();
-        return view('userProfiel', compact('profileData'));
-    }
+    // public function profileChanges()
+    // {
+    //     $id = Auth::user()->id;
+    //     $profileData = User::find();
+    //     return view('userProfiel', compact('profileData'));
+    // }
 
     //create
     public function create()

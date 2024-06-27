@@ -9,7 +9,7 @@ KasBonKu
     <!--  Row 1 -->
     <div class="col-lg-12 d-flex align-items-stretch">
         <div class="card w-100">
-            <div class="card-body p-4">
+            <div class="card-body p-6">
                 <h5 class="card-title fw-semibold mb-4">Permintaan Barang</h5>
                 <form action="/permintaan/filter" method="GET">
                     @csrf
@@ -37,6 +37,7 @@ KasBonKu
                         </div>
                     </div>
                 </form>
+                <a href="{{route('permintaan.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{session('success')}}</strong>

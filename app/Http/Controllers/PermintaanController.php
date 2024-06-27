@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bukti_bayar;
 use App\Models\permintaan;
 use Illuminate\Http\Request;
 
@@ -18,8 +19,9 @@ class PermintaanController extends Controller
     public function first()
     {
         $permintaan = Permintaan::all();
+        $buktibayar = bukti_bayar::all();
 
-        return view('home', compact('permintaan'));
+        return view('home', compact('permintaan', 'buktibayar'));
     }
 
     public function filter(Request $request)
@@ -106,4 +108,6 @@ class PermintaanController extends Controller
             return redirect()->route('permintaan.index')->with('error', 'Permintaan pembelian barang tidak ditemukan.');
         }
     }
+
+
 }
