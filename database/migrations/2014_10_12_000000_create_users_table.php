@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('kelas');
             $table->string('alamat');
             $table->integer('absen');
-            $table->string('photo');
             $table->boolean('admin')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

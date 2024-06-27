@@ -34,7 +34,7 @@ Route::middleware(['verified'])->group(function () {
         Route::GET('/create', [SiswaController::class, 'create'])->name('create');
         Route::GET('/edit/{id}', [SiswaController::class, 'edit'])->name('edit');
         Route::POST('/store', [SiswaController::class, 'store'])->name('store');
-        Route::PUT('/update/{id}', [SiswaController::class, 'update'])->name('update');
+        Route::PUT('/update/{hashedEmail}', [SiswaController::class, 'update'])->name('update');
         Route::DELETE('/destroy/{id}', [SiswaController::class, 'destroy'])->name('destroy');
     });
 

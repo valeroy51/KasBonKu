@@ -21,13 +21,22 @@ class SiswaController extends Controller
         try {
             // Dekripsi email yang di-hash
             $email = $hashedEmail ? Crypt::decryptString($hashedEmail) : Auth::user()->email;
+
+            // Ambil user yang sesuai dengan email
             $user = User::where('email', $email)->firstOrFail();
+
+            // Ambil semua pengguna (untuk menampilkan semua kelas)
             $users = User::all();
-            return view('siswa.index', compact('users', 'user'));
+
+            // Ambil semua kelas yang unik dari pengguna
+            $classes = $users->unique('kelas')->pluck('kelas')->toArray();
+
+            return view('siswa.index', compact('users', 'user', 'classes'));
         } catch (\Exception $e) {
             abort(404);
         }
     }
+
 
 
     public function profile($hashedEmail)
@@ -70,60 +79,60 @@ class SiswaController extends Controller
     {
         $email = Crypt::decryptString($hashedEmail);
         $user = User::where('email', $email)->first();
-        
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email', // tambahkan validasi email
             'kelas' => 'required',
             'absen' => 'required',
             'alamat' => 'required',
-        ]);     
-    
+        ]);
+
         $updateData = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'kelas' => $request->input('kelas'),
             'absen' => $request->input('absen'),
             'alamat' => $request->input('alamat'),
-        ];     
-    
+        ];
+
         // Ubah penanganan pembaruan user dengan menggunakan ID yang sesuai
         User::where('email', $email)->update($updateData);
-    
-        return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail]);
 
+        return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail]);
     }
-    
+
 
     //edit
     public function edit($id)
     {
-        $ssw = User::find($id);
-        return view('siswa.edit', compact('ssw'));
+        $user = User::find($id);
+        return view('siswa.edit', compact('user'));
     }
+
 
 
     //update
-    public function update(Request $request, $id)
+    public function update(Request $request, $hashedEmail)
     {
+        $email = Crypt::decryptString($hashedEmail);
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail])->with('error', 'User not found');
+        }
+
         $request->validate([
-            'noUrut' => 'required',
-            'nama' => 'required',
-            'email' => 'required',
-            'kelas' => 'required',
+            'admin' => 'required',
         ]);
 
-        $update = [
-            'noUrut' => $request->noUrut,
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'kelas' => $request->kelas,
-        ];
+        $user->update([
+            'admin' => $request->input('admin'),
+        ]);
 
-        User::whereId($id)->update($update);
-
-        return redirect()->route('siswa')->with('success', 'Siswa edited successfully');
+        return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail])->with('success', 'Siswa edited successfully');
     }
+
 
     //destroy
     public function destroy($id)

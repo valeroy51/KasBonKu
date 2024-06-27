@@ -18,12 +18,11 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'valeroy51@gmail.com',
-            'kelas' => 'Admin Class',
+            'kelas' => 'Admin',
             'absen' => 999,
             'password' => Hash::make('admin'), 
             'admin' => true,
             'email_verified_at' =>  '2004-09-28 00:00:00',
-            'photo' => 'default_photo_path.jpg',
             'alamat' =>  '-'
         ]);
     }
