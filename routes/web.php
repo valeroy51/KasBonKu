@@ -45,6 +45,7 @@ Route::middleware(['verified'])->group(function () {
         Route::POST('/confirm/{id}', [BuktiBayarController::class, 'confirm'])->name('confirm');
         Route::POST('/store', [BuktiBayarController::class, 'store'])->name('store');
         Route::PUT('/update/{id}', [BuktiBayarController::class, 'update'])->name('update');
+        Route::DELETE('/destroy/{id}', [PermintaanController::class, 'destroy'])->name('destroy');
         Route::post('/reject/{id}', [BuktiBayarController::class, 'reject'])->name('reject');
     });
 

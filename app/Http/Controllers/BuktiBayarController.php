@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\bukti_bayar;
+use App\Models\permintaan;
 use Illuminate\Http\Request;
 
 class BuktiBayarController extends Controller
@@ -47,31 +48,21 @@ class BuktiBayarController extends Controller
     {
         // Mencari data berdasarkan id
         $bukti_bayar = bukti_bayar::find($id);
-
         if ($bukti_bayar) {
             // Mengupdate status menjadi 'confirmed'
             $bukti_bayar->status = 'confirmed';
             $bukti_bayar->save();
-
             return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran dikonfirmasi.');
         } else {
             return redirect()->route('buktiBayar.index')->with('error', 'Bukti Pembayaran tidak ditemukan.');
         }
     }
 
-    public function reject($id)
+    public function destroy($id)
     {
-        // Mencari data berdasarkan id
-        $bukti_bayar = bukti_bayar::find($id);
-
-        if ($bukti_bayar) {
-            // Mengupdate status menjadi 'rejected'
-            $bukti_bayar->status = 'rejected';
-            $bukti_bayar->save();
-
-            return redirect()->route('buktiBayar.index')->with('success', 'Bukti Pembayaran ditolak.');
-        } else {
-            return redirect()->route('buktiBayar.index')->with('error', 'Bukti Pembayaran tidak ditemukan.');
-        }
+        $bbr = bukti_bayar::find($id);
+        $bbr->delete();
+        return redirect()->route('buktiBayar.index')
+            ->with('success', 'Permintaan berhasil dihapus');
     }
 }
