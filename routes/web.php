@@ -19,24 +19,17 @@ use App\Http\Controllers\PermintaanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// Route::GET('/', function () {
-//     return view('welcome');
-// });
-
-// Route::GET('/', [homeController::class, 'index']);
-// Route::GET('/register', [homeController::class, 'register']);
-// Route::GET('/login', [homeController::class, 'login']);
-
 Auth::routes(['verify' => true]);
 
 Route::GET('/', [PermintaanController::class, 'first'])->name('home');
+
+Route::GET('/userProfile/{hashedEmail}', [SiswaController::class, 'profile'])->name('userProfile');
 
 Route::middleware(['verified'])->group(function () {
     Route::GET('/home', [PermintaanController::class, 'first'])->name('home');
 
     Route::prefix('siswa')->name('siswa.')->group(function () {
-        Route::GET('/', [SiswaController::class, 'index'])->name('siswa');
+        Route::get('/{hashedEmail}', [SiswaController::class, 'index'])->name('index');
         Route::GET('/create', [SiswaController::class, 'create'])->name('create');
         Route::GET('/edit/{id}', [SiswaController::class, 'edit'])->name('edit');
         Route::POST('/store', [SiswaController::class, 'store'])->name('store');
@@ -65,5 +58,4 @@ Route::middleware(['verified'])->group(function () {
         Route::GET('/filter', [PermintaanController::class, 'filter'])->name('filter');
     });
 
-    Route::get('/userProfile/{name}', [SiswaController::class, 'profile'])->name('userProfile');
 });

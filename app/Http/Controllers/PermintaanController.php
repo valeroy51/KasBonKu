@@ -9,14 +9,14 @@ class PermintaanController extends Controller
 {
     //index
     public function index()
-    {   
+    {
         $permintaan = Permintaan::paginate(10);
 
         return view('permintaan.index', compact('permintaan'));
     }
 
     public function first()
-    {   
+    {
         $permintaan = Permintaan::all();
 
         return view('home', compact('permintaan'));
@@ -29,18 +29,18 @@ class PermintaanController extends Controller
         // $query = Permintaan::query();
 
         // filter by nama
-        $permintaan->when($request->nama, function($query) use ($request){
-            return $query->where('nama', 'like', '%'.$request->nama.'%');
+        $permintaan->when($request->nama, function ($query) use ($request) {
+            return $query->where('nama', 'like', '%' . $request->nama . '%');
         });
-        
+
 
         // filter by harga
-        $permintaan->when($request->harga, function($query) use ($request){
+        $permintaan->when($request->harga, function ($query) use ($request) {
             return $query->where('harga', '>=', $request->harga);
         });
 
         // filter by prioritas
-        $permintaan->when($request->prioritas, function($query) use ($request){
+        $permintaan->when($request->prioritas, function ($query) use ($request) {
             return $query->wherePrioritas($request->prioritas);
         });
 
@@ -51,7 +51,6 @@ class PermintaanController extends Controller
         // $hasil = $query->get();
 
         return view('permintaan.index', ['permintaan' => $permintaan->paginate(10)]);
-
     }
 
     public function create()
@@ -61,18 +60,28 @@ class PermintaanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'barang' => 'required',
-            'harga' => 'required',
-            'prioritas' => 'required',
-            'link' => 'required',
-            'catatan' => 'required',
-        ]);
-        $permintaan = permintaan::create($request->all());
+        try {
+            // Validasi input
+            $request->validate([
+                'nama' => 'required',
+                'barang' => 'required',
+                'harga' => 'required|integer', // Validasi harga harus integer
+                'prioritas' => 'required',
+                'link' => 'required',
+                'catatan' => 'required',
+            ]);
 
-        return redirect()->route('permintaan.create')->with('success', 'Pengiriman Request Barang Berhasil');
+            // Coba untuk membuat permintaan baru
+            $permintaan = Permintaan::create($request->all());
+
+            // Redirect dengan pesan sukses jika berhasil
+            return redirect()->route('permintaan.create')->with('success', 'Pengiriman Request Barang Berhasil');
+        } catch (\Exception $e) {
+            // Tangkap pengecualian jika ada error
+            return redirect()->route('permintaan.create')->with('error', 'Terjadi kesalahan, pastikan semua input sudah benar dan coba lagi.');
+        }
     }
+
 
     public function destroy($id)
     {
