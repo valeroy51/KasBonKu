@@ -182,7 +182,7 @@ $(function () {
       {
         name: "Earnings",
         color: "#49BEFF",
-        data: [25, 66, 20, 40, 12, 58, 20],
+        data: [1, 5, 9, 9, 2, 1, 10, 11],
       },
     ],
     stroke: {
