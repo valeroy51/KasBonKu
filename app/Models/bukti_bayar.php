@@ -11,10 +11,10 @@ class bukti_bayar extends Model
 
     protected $fillable = [
         'id',
-        'nama',  
-        'kelas', 
+        'nama',
+        'kelas',
         'harga',
-        'metode', 
+        'metode',
         'tanggal',
         'notes',
         'created_at',
@@ -24,5 +24,15 @@ class bukti_bayar extends Model
     protected $table = 'bukti_bayar';
     protected $primaryKey = 'id'; // Atur primary key model sebagai 'id'
     public $incrementing = false; // Nonaktifkan incrementing karena menggunakan UUID
-    protected $keyType = 'string'; 
+    protected $keyType = 'string';
+
+    public function setHargaAttribute($value)
+    {
+        $this->attributes['harga'] = preg_replace('/[^\d]/', '', $value);
+    }
+
+    public function getHargaAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
 }

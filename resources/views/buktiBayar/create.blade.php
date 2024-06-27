@@ -16,6 +16,11 @@
                             <strong>{{session('success')}}</strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+                        @elseif (session('error'))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>{{session('error')}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         @endif
                         <form action="{{route('buktiBayar.store')}}" method="POST">
                             @csrf
@@ -29,7 +34,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="harga" class="form-label">Jumlah Pembayaran</label>
-                                <input type="text" class="form-control" id="harga" name="harga" value="Rp 20.000" readonly>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="text" id="harga" name="harga" class="form-control" placeholder="Masukkan Harga" value="20000">
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="metode" class="form-label">Metode Pembayaran</label>

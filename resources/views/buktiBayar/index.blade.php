@@ -12,12 +12,12 @@ List Bukti Bayar
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">List Bukti Pembayaran</h5>
                 @if (session('success'))
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>{{session('success')}}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{session('success')}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 @endif
-                
+
                 <!-- Filter Form -->
                 <div class="row mb-4">
                     <div class="col-md-3">
@@ -36,7 +36,7 @@ List Bukti Bayar
                         <button id="searchButton" class="btn btn-primary">Search</button>
                     </div>
                 </div>
-                
+
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle" id="dataTable">
                         <thead class="text-dark fs-4">
@@ -69,31 +69,31 @@ List Bukti Bayar
                         </thead>
                         <tbody>
                             @foreach ($bukti_bayar as $bbr)
-                                <tr>
-                                    <td>{{ $bbr->id }}</td>
-                                    <td>{{ $bbr->nama }}</td>
-                                    <td>{{ $bbr->kelas }}</td>
-                                    <td>{{ $bbr->harga }}</td>
-                                    <td>{{ $bbr->metode }}</td>
-                                    <td>{{ $bbr->tanggal }}</td>
-                                    <td>{{ $bbr->notes }}</td>
-                                    <td>
-                                        @if ($bbr->status == 'confirmed')
-                                            Confirmed
-                                        @elseif ($bbr->status == 'rejected')
-                                            Rejected
-                                        @else
-                                            <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                <button type="submit" class="btn btn-success">Confirm</button>
-                                            </form>
-                                            <form action="{{ route('buktiBayar.reject', $bbr->id) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                <button type="submit" class="btn btn-warning">Reject</button>
-                                            </form>
-                                        @endif
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{ $bbr->id }}</td>
+                                <td>{{ $bbr->nama }}</td>
+                                <td>{{ $bbr->kelas }}</td>
+                                <td>Rp.{{ $bbr->harga }}</td>
+                                <td>{{ $bbr->metode }}</td>
+                                <td>{{ $bbr->tanggal }}</td>
+                                <td>{{ $bbr->notes }}</td>
+                                <td>
+                                    @if ($bbr->status == 'confirmed')
+                                    Confirmed
+                                    @elseif ($bbr->status == 'rejected')
+                                    Rejected
+                                    @else
+                                    <form action="{{ route('buktiBayar.confirm', $bbr->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Confirm</button>
+                                    </form>
+                                    <form action="{{ route('buktiBayar.reject', $bbr->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning">Reject</button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
