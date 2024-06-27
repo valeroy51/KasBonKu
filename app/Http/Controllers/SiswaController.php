@@ -46,13 +46,6 @@ class SiswaController extends Controller
         }
     }
 
-    // public function profileChanges()
-    // {
-    //     $id = Auth::user()->id;
-    //     $profileData = User::find();
-    //     return view('userProfiel', compact('profileData'));
-    // }
-
     //create
     public function create()
     {
@@ -72,6 +65,35 @@ class SiswaController extends Controller
 
         return redirect()->route('siswa')->with('success', 'Siswa created successfully');
     }
+
+    public function profileStore(Request $request, $hashedEmail)
+    {
+        $email = Crypt::decryptString($hashedEmail);
+        $user = User::where('email', $email)->first();
+        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email', // tambahkan validasi email
+            'kelas' => 'required',
+            'absen' => 'required',
+            'alamat' => 'required',
+        ]);     
+    
+        $updateData = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'kelas' => $request->input('kelas'),
+            'absen' => $request->input('absen'),
+            'alamat' => $request->input('alamat'),
+        ];     
+    
+        // Ubah penanganan pembaruan user dengan menggunakan ID yang sesuai
+        User::where('email', $email)->update($updateData);
+    
+        return redirect()->route('siswa.index', ['hashedEmail' => $hashedEmail]);
+
+    }
+    
 
     //edit
     public function edit($id)
