@@ -11,15 +11,7 @@ List Siswa
         <div class="card w-100">
             <div class="card-body p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="card-title fw-semibold">List Anggota</h5>
-                    <div>
-                        <label for="classDropdown" class="me-2">Pilih Kelas:</label>
-                        <select id="classDropdown" class="form-select" style="width: auto;">
-                            @foreach ($classes as $class)
-                                <option value="{{ $class }}" {{ $user->kelas == $class ? 'selected' : '' }}>{{ $class }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <h5 class="card-title fw-semibold">List Anggota 10 C</h5>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">

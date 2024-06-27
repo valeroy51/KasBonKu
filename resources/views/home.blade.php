@@ -15,14 +15,6 @@ KasBonKu
                         <div class="mb-3 mb-sm-0">
                             <h5 class="card-title fw-semibold">Arus Pemasukan dan Pengeluaran Bulanan</h5>
                         </div>
-                        <div>
-                            <select class="form-select">
-                                <option value="1">Maret 2024</option>
-                                <option value="2">April 2024</option>
-                                <option value="3">Mei 2024</option>
-                                <option value="4">Juni 2024</option>
-                            </select>
-                        </div>
                     </div>
                     <div id="chart"></div>
                 </div>
@@ -39,8 +31,7 @@ KasBonKu
                                 <div class="col-8">
                                     <h4 class="fw-semibold mb-3">Rp.720.000</h4>
                                     <div class="d-flex align-items-center mb-3">
-                                        <span
-                                            class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
+                                        <span class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
                                             <i class="ti ti-arrow-up-left text-success"></i>
                                         </span>
                                         <p class="text-dark me-1 fs-3 mb-0">+9%</p>
@@ -52,8 +43,7 @@ KasBonKu
                                             <span class="fs-2">2022</span>
                                         </div>
                                         <div>
-                                            <span
-                                                class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
+                                            <span class="round-8 bg-light-primary rounded-circle me-2 d-inline-block"></span>
                                             <span class="fs-2">2021</span>
                                         </div>
                                     </div>
@@ -76,8 +66,7 @@ KasBonKu
                                     <h5 class="card-title mb-9 fw-semibold"> Pendapatan Bulanan </h5>
                                     <h4 class="fw-semibold mb-3">Rp.20.000</h4>
                                     <div class="d-flex align-items-center pb-1">
-                                        <span
-                                            class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
+                                        <span class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
                                             <i class="ti ti-arrow-down-right text-danger"></i>
                                         </span>
                                         <p class="text-dark me-1 fs-3 mb-0">+9%</p>
@@ -86,8 +75,7 @@ KasBonKu
                                 </div>
                                 <div class="col-4">
                                     <div class="d-flex justify-content-end">
-                                        <div
-                                            class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                        <div class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
                                             <i class="ti ti-currency-dollar fs-6"></i>
                                         </div>
                                     </div>
@@ -107,33 +95,31 @@ KasBonKu
                 <div class="card w-100">
                     <div class="card-body p-4">
                         <div class="mb-4">
-                            <h5 class="card-title fw-semibold">Riwayat Transaksi</h5>
+                            <h5 class="card-title fw-semibold">Riwayat Pembayaran</h5>
                         </div>
                         <ul class="timeline-widget mb-0 position-relative mb-n5">
                             <ul class="timeline">
                                 @forelse($buktibayar as $bbr)
-                                    <li class="timeline-item d-flex position-relative overflow-hidden">
-                                        <div class="timeline-time text-dark flex-shrink-0 text-end">
-                                            {{ \Carbon\Carbon::parse($bbr->tanggal)->format('d M Y') }}
-                                        </div>
-                                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                            <span
-                                                class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
-                                            <span class="timeline-badge-border d-block flex-shrink-0"></span>
-                                        </div>
-                                        <div class="timeline-desc fs-3 text-dark mt-n1" style="margin-top: -2rem;">
-                                            Pembayaran diterima dari {{ $bbr->nama }} sejumlah {{ $bbr->harga }}.
-                                        </div>
-                                    </li>
+                                <li class="timeline-item d-flex position-relative overflow-hidden">
+                                    <div class="timeline-time text-dark flex-shrink-0 text-end">
+                                        {{ \Carbon\Carbon::parse($bbr->tanggal)->format('d M Y') }}
+                                    </div>
+                                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                                        <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
+                                        <span class="timeline-badge-border d-block flex-shrink-0"></span>
+                                    </div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1" style="margin-top: -2rem;">
+                                        Pembayaran diterima dari {{ $bbr->nama }} sejumlah Rp.{{ $bbr->harga }}.
+                                    </div>
+                                </li>
                                 @empty
-                                    <li class="timeline-item d-flex position-relative overflow-hidden">
-                                        <div class="timeline-time text-dark flex-shrink-0 text-end">-</div>
-                                        <div class="timeline-badge-wrap d-flex flex-column align-items-center">
-                                            <span
-                                                class="timeline-badge border-2 border border-secondary flex-shrink-0 my-8"></span>
-                                        </div>
-                                        <div class="timeline-desc fs-3 text-dark mt-n1">Tidak ada transaksi.</div>
-                                    </li>
+                                <li class="timeline-item d-flex position-relative overflow-hidden">
+                                    <div class="timeline-time text-dark flex-shrink-0 text-end">-</div>
+                                    <div class="timeline-badge-wrap d-flex flex-column align-items-center">
+                                        <span class="timeline-badge border-2 border border-secondary flex-shrink-0 my-8"></span>
+                                    </div>
+                                    <div class="timeline-desc fs-3 text-dark mt-n1">Tidak ada transaksi.</div>
+                                </li>
                                 @endforelse
                             </ul>
                         </ul>
@@ -169,43 +155,43 @@ KasBonKu
                                 </thead>
                                 <tbody>
                                     @forelse ($permintaan as $minta)
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">{{ $minta->id }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1">{{ $minta->nama }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1">{{ $minta->barang }}</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                @if ($minta->prioritas == 'low')
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
-                                                    </div>
-                                                @elseif ($minta->prioritas == 'medium')
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
-                                                    </div>
-                                                @elseif ($minta->prioritas == 'high')
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-danger rounded-3 fw-semibold">High</span>
-                                                    </div>
-                                                @else
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
-                                                    </div>
-                                                @endif
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0 fs-4">{{ $minta->harga }}</h6>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">{{ $minta->id }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">{{ $minta->nama }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">{{ $minta->barang }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            @if ($minta->prioritas == 'low')
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
+                                            </div>
+                                            @elseif ($minta->prioritas == 'medium')
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
+                                            </div>
+                                            @elseif ($minta->prioritas == 'high')
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-danger rounded-3 fw-semibold">High</span>
+                                            </div>
+                                            @else
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
+                                            </div>
+                                            @endif
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4">Rp.{{ $minta->harga }}</h6>
+                                        </td>
+                                    </tr>
                                     @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">Permintaan Kosong</td>
-                                        </tr>
+                                    <tr>
+                                        <td colspan="10" class="text-center">Permintaan Kosong</td>
+                                    </tr>
                                     @endforelse
                                 </tbody>
                             </table>

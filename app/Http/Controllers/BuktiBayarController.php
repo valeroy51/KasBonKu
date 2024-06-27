@@ -26,6 +26,7 @@ class BuktiBayarController extends Controller
 
     public function store(Request $request)
     {
+        try {
         $request->validate([
             'nama' => 'required',
             'kelas' => 'required',
@@ -35,9 +36,11 @@ class BuktiBayarController extends Controller
             'notes' => 'required',
         ]);
 
-        $bukti_bayar = bukti_bayar::create($request->all());
-
-        return redirect()->route('buktiBayar.create')->with('success', 'Pengiriman Bukti Pembayaran Berhasil');
+            $bukti_bayar = bukti_bayar::create($request->all());
+            return redirect()->route('buktiBayar.create')->with('success', 'Pengiriman Bukti Pembayaran Berhasil');
+        } catch (\Exception $e) {
+            return redirect()->route('buktiBayar.create')->with('error', 'Terjadi kesalahan, pastikan semua input sudah benar dan coba lagi.');
+        }
     }
 
     public function confirm($id)

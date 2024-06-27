@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->String('prioritas');
             $table->String('link');
-            $table->String('catatan');
+            $table->String('catatan')->nullable();
             $table->timestamps();
         });
     }

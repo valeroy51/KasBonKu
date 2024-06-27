@@ -25,5 +25,38 @@ class UserSeeder extends Seeder
             'email_verified_at' =>  '2004-09-28 00:00:00',
             'alamat' =>  '-'
         ]);
+        //user biasa
+        User::create([
+            'name' => 'Stefanus Anthony Harry',
+            'email' => 'valeroy.535220151@stu.untar.ac.id',
+            'kelas' => '10 C',
+            'absen' => 16,
+            'password' => Hash::make('harry'), 
+            'admin' => true,
+            'email_verified_at' =>  '2004-09-28 00:00:00',
+            'alamat' =>  '-'
+        ]);
+        //user biasa
+        User::create([
+            'name' => 'Valeroy Putra Sientika',
+            'email' => 'valeroy52@gmail.com',
+            'kelas' => '10 C',
+            'absen' => 36,
+            'password' => Hash::make('valeroy'), 
+            'admin' => true,
+            'email_verified_at' =>  '2004-09-28 00:00:00',
+            'alamat' =>  '-'
+        ]);
+        //user biasa
+        User::create([
+            'name' => 'Hans Nathanael Tedja',
+            'email' => 'valeroy913@gmail.com',
+            'kelas' => '10 C',
+            'absen' => 15,
+            'password' => Hash::make('hans'), 
+            'admin' => true,
+            'email_verified_at' =>  '2004-09-28 00:00:00',
+            'alamat' =>  '-'
+        ]);
     }
 }

@@ -37,7 +37,6 @@ KasBonKu
                         </div>
                     </div>
                 </form>
-                <a href="{{route('permintaan.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>{{session('success')}}</strong>
