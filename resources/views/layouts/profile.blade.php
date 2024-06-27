@@ -22,26 +22,29 @@
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                         <div class="message-body">
                             @auth
-                                <a href="{{ route('userProfile', ['name' => Auth::user()->name]) }}" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-user fs-6"></i>
-                                    <p class="mb-0 fs-3">My Profile</p>
-                                </a>
+                            @php
+                            $hashedEmail = Crypt::encryptString(Auth::user()->email);
+                            @endphp
+                            <a href="{{ route('userProfile', ['hashedEmail' => $hashedEmail]) }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                <i class="ti ti-user fs-6"></i>
+                                <p class="mb-0 fs-3">My Profile</p>
+                            </a>
                             @else
-                                <a href="{{ route('login') }}" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-user fs-6"></i>
-                                    <p class="mb-0 fs-3">No Profile</p>
-                                </a>
+                            <a href="{{ route('login') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                <i class="ti ti-user fs-6"></i>
+                                <p class="mb-0 fs-3">No Profile</p>
+                            </a>
                             @endauth
                             @auth
-                                <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block" onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
-                                    @csrf
-                                </form>
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
+                                @csrf
+                            </form>
                             @else
-                                <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('login') }}">Login</a>
+                            <a class="btn btn-outline-primary mx-3 mt-2 d-block" href="{{ route('login') }}">Login</a>
                             @endauth
                         </div>
                     </div>

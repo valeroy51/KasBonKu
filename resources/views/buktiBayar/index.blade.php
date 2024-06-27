@@ -11,7 +11,6 @@ List Bukti Bayar
         <div class="card w-100">
             <div class="card-body p-6">
                 <h5 class="card-title fw-semibold mb-4">List Bukti Pembayaran</h5>
-                <a href="{{route('buktiBayar.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
                 @if (session('success'))
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>{{session('success')}}</strong>

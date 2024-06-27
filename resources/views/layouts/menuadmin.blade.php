@@ -3,8 +3,8 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
-                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <a href="{{ url('/home') }}" class="text-nowrap logo-img">
+                <img src="../assets/images/logos/dark-logo.svg" width="180" alt="Logo" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -18,7 +18,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ url('/home') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -30,7 +30,7 @@
                     <span class="hide-menu">UI COMPONENTS</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/buktiBayar/create')}}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('buktiBayar.create') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>
@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/permintaan/create')}}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('permintaan.create') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>
@@ -50,7 +50,7 @@
                     <span class="hide-menu">DATA</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/buktiBayar')}}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('buktiBayar.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-cards"></i>
                         </span>
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/permintaan')}}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('permintaan.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-cards"></i>
                         </span>
@@ -66,7 +66,10 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{url('/siswa')}}" aria-expanded="false">
+                    @php
+                    $hashedEmail = Crypt::encryptString(Auth::user()->email);
+                    @endphp
+                    <a class="sidebar-link" href="{{ route('siswa.index', ['hashedEmail' => $hashedEmail]) }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-cards"></i>
                         </span>
@@ -75,8 +78,8 @@
                 </li>
             </ul>
         </nav>
-        <!-- End Sidebar navigation -->
+        <!-- End Sidebar navigation-->
     </div>
     <!-- End Sidebar scroll-->
 </aside>
-<!--  Sidebar End -->
+<!-- Sidebar End -->
