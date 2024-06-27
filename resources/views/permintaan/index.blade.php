@@ -37,12 +37,6 @@ KasBonKu
                         </div>
                     </div>
                 </form>
-                @if (session('success'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{session('success')}}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
