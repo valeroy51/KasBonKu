@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'kelas' => '10 C',
             'absen' => 16,
             'password' => Hash::make('harry'), 
-            'admin' => true,
+            'admin' => false,
             'email_verified_at' =>  '2004-09-28 00:00:00',
             'alamat' =>  '-'
         ]);
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             'kelas' => '10 C',
             'absen' => 36,
             'password' => Hash::make('valeroy'), 
-            'admin' => true,
+            'admin' => false,
             'email_verified_at' =>  '2004-09-28 00:00:00',
             'alamat' =>  '-'
         ]);
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'kelas' => '10 C',
             'absen' => 15,
             'password' => Hash::make('hans'), 
-            'admin' => true,
+            'admin' => false,
             'email_verified_at' =>  '2004-09-28 00:00:00',
             'alamat' =>  '-'
         ]);

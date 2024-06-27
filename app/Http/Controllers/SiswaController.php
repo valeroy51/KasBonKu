@@ -15,28 +15,27 @@ class SiswaController extends Controller
         $this->middleware('auth');
     }
 
-    //index
-    public function index($hashedEmail = null)
-    {
-        try {
-            // Dekripsi email yang di-hash
-            $email = $hashedEmail ? Crypt::decryptString($hashedEmail) : Auth::user()->email;
+//index
+public function index($hashedEmail = null)
+{
+    try {
+        // Dekripsi email yang di-hash
+        $email = $hashedEmail ? Crypt::decryptString($hashedEmail) : Auth::user()->email;
 
-            // Ambil user yang sesuai dengan email
-            $user = User::where('email', $email)->firstOrFail();
+        // Ambil user yang sesuai dengan email
+        $user = User::where('email', $email)->firstOrFail();
 
-            // Ambil semua pengguna (untuk menampilkan semua kelas)
-            $users = User::all();
+        // Ambil semua pengguna (untuk menampilkan semua kelas)
+        $users = User::all();
 
-            // Ambil semua kelas yang unik dari pengguna
-            $classes = $users->unique('kelas')->pluck('kelas')->toArray();
+        // Ambil semua kelas yang unik dari pengguna
+        $classes = $users->unique('kelas')->pluck('kelas')->toArray();
 
-            return view('siswa.index', compact('users', 'user', 'classes'));
-        } catch (\Exception $e) {
-            abort(404);
-        }
+        return view('siswa.index', compact('users', 'user', 'classes', 'hashedEmail'));
+    } catch (\Exception $e) {
+        abort(404);
     }
-
+}
 
 
     public function profile($hashedEmail)
@@ -55,25 +54,6 @@ class SiswaController extends Controller
         }
     }
 
-    //create
-    public function create()
-    {
-        return view('siswa.create');
-    }
-    //store
-    public function store(Request $request)
-    {
-        $request->validate([
-            'noUrut' => 'required',
-            'nama' => 'required',
-            'email' => 'required',
-            'kelas' => 'required',
-        ]);
-
-        $siswa = User::create($request->all());
-
-        return redirect()->route('siswa')->with('success', 'Siswa created successfully');
-    }
 
     public function profileStore(Request $request, $hashedEmail)
     {
@@ -135,10 +115,17 @@ class SiswaController extends Controller
 
 
     //destroy
-    public function destroy($id)
-    {
-        $ssw = User::find($id);
-        $ssw->delete();
-        return redirect()->route('siswa')->with('success', 'Siswa deleted successfully');
+public function destroy($id)
+{
+    $ssw = User::find($id);
+
+    if (!$ssw) {
+        return redirect()->route('siswa.index', ['hashedEmail' => Crypt::encryptString(Auth::user()->email)])->with('error', 'User not found');
     }
+
+    $ssw->delete();
+
+    return redirect()->route('siswa.index', ['hashedEmail' => Crypt::encryptString(Auth::user()->email)])->with('success', 'Siswa deleted successfully');
+}
+
 }
