@@ -57,6 +57,7 @@ Route::middleware(['verified'])->group(function () {
         Route::DELETE('/destroy/{id}', [PermintaanController::class, 'destroy'])->name('destroy');
         Route::GET('/search', [PermintaanController::class, 'search'])->name('search');
         Route::GET('/filter', [PermintaanController::class, 'filter'])->name('filter');
+        Route::GET('/sort', [PermintaanController::class, 'sort'])->name('sort');
     });
 
 });
