@@ -6,10 +6,10 @@ List Bukti Bayar
 
 @section('content')
 <div class="container-fluid">
-    <!--  Row 1 -->
+    <!-- Row 1 -->
     <div class="col-lg-12 d-flex align-items-stretch">
         <div class="card w-100">
-            <div class="card-body p-6">
+            <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">List Bukti Pembayaran</h5>
                 @if (session('success'))
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,8 +17,23 @@ List Bukti Bayar
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
+                <!-- Filter Form -->
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <input type="text" id="searchName" class="form-control" placeholder="Nama Siswa">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="searchClass" class="form-control" placeholder="Kelas">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" id="searchDate" class="form-control" placeholder="Tanggal">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button id="searchButton" class="btn btn-primary">Search</button>
+                </div>
                 <div class="table-responsive">
-                    <table class="table text-nowrap mb-0 align-middle">
+                    <table class="table text-nowrap mb-0 align-middle" id="dataTable">
                         <thead class="text-dark fs-4">
                             <tr>
                                 <th scope="col" class="border-bottom-0">
@@ -38,7 +53,6 @@ List Bukti Bayar
                                 </th>
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Tanggal</h6>
-                                </th>
                                 </th>
                                 <th scope="col" class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Notes</h6>
@@ -85,4 +99,37 @@ List Bukti Bayar
         </div>
     </div>
 </div>
+
+<!-- JavaScript untuk fitur pencarian -->
+<script>
+    document.getElementById('searchButton').addEventListener('click', function() {
+        let searchName = document.getElementById('searchName').value.toLowerCase();
+        let searchClass = document.getElementById('searchClass').value.toLowerCase();
+        let searchDate = document.getElementById('searchDate').value;
+
+        let rows = document.getElementById('dataTable').getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) { // Mulai dari 1 untuk melewati header
+            let cells = rows[i].getElementsByTagName('td');
+            let match = true;
+
+            // Check Nama
+            if (searchName && !cells[1].textContent.toLowerCase().includes(searchName)) {
+                match = false;
+            }
+            
+            // Check Kelas
+            if (searchClass && !cells[2].textContent.toLowerCase().includes(searchClass)) {
+                match = false;
+            }
+            
+            // Check Tanggal
+            if (searchDate && cells[5].textContent !== searchDate) {
+                match = false;
+            }
+            
+            rows[i].style.display = match ? '' : 'none';
+        }
+    });
+</script>
 @endsection

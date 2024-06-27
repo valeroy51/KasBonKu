@@ -6,7 +6,7 @@ KasBonKu
 
 @section('content')
 <!--  Main wrapper -->
-<div class="body-wrapper">
+
     <div class="container-fluid">
         <!--  Row 1 -->
         <div class="container-fluid">
@@ -59,7 +59,5 @@ KasBonKu
                 </div>
             </div>
         </div>
-
-    </div>
 </div>
 @endsection

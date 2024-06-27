@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'), 
             'admin' => true,
             'email_verified_at' =>  '2004-09-28 00:00:00',
+            'photo' => 'default_photo_path.jpg',
             'alamat' =>  '-'
         ]);
     }

@@ -50,7 +50,7 @@
                                 <label for="notes" class="form-label">Catatan Tambahan (Opsional)</label>
                                 <textarea class="form-control" id="notes" rows="3" name="notes" placeholder="Masukkan catatan tambahan"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Kirim Bukti Pembayaran</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
