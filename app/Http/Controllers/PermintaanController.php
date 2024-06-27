@@ -11,7 +11,7 @@ class PermintaanController extends Controller
     //index
     public function index()
     {
-        $permintaan = Permintaan::paginate(10);
+        $permintaan = Permintaan::sortable()->paginate(10);
 
         return view('permintaan.index', compact('permintaan'));
     }
@@ -55,6 +55,11 @@ class PermintaanController extends Controller
         return view('permintaan.index', ['permintaan' => $permintaan->paginate(10)]);
     }
 
+    // public function sort(){
+    //     $permintaan = Permintaan::sortable()->paginate(5);
+    //     return view('permintaan.index', compact('permintaan'));
+    // }
+
     public function create()
     {
         return view('permintaan.create');
@@ -89,7 +94,7 @@ class PermintaanController extends Controller
     {
         $minta = permintaan::find($id);
         $minta->delete();
-        return redirect()->route('permintaan')
+        return redirect()->route('permintaan.index')
             ->with('success', 'Permintaan berhasil dihapus');
     }
 
