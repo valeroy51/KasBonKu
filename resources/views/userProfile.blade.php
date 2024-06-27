@@ -81,7 +81,6 @@ Profile
               $hashedEmail = Crypt::encryptString(Auth::user()->email);
               @endphp
               <form action="{{ route('profileStore', ['hashedEmail' => $hashedEmail]) }}" method="POST">
-
                 @method('PUT')
                 @csrf
                 <div class="mb-3">
