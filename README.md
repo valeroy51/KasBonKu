@@ -20,8 +20,8 @@
     - Password: admin
 
 2. **Akun User "Stefanus Anthony Harry"**
-    - Email: valeroy.535220151@stu.untar.ac.id
-    - Password: harry
+    - Email: stefanusanthony33@gmail.com
+    - Password: stefanus
 
 3. **Akun User "Valeroy Putra Sientika"**
     - Email: valeroy52@gmail.com
